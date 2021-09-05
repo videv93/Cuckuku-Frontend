@@ -1,0 +1,41 @@
+@import '../base/variables';
+
+.footer {
+  background-image: url('../../public/images/bg-4.png');
+  padding-top: 72px;
+  .main {
+    .contact {
+      .logo {
+        width: 100%;
+      }
+      .item {
+        display: flex;
+        align-items: flex-start;
+        .image {
+          width: 14px;
+        }
+        .text {
+          margin-left: 8px;
+        }
+      }
+    }
+    .menu {
+      .item {
+        margin-top: 16px;
+      }
+    }
+    .subscription {
+      .social {
+        .icon {
+          width: 16px;
+        }
+      }
+    }
+  }
+  .copyRight {
+    background-color: $color-main;
+    color: rgba(255,255,255,0.5);
+    padding: 16px 0;
+  }
+}
+

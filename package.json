@@ -7,9 +7,14 @@
     "type-check": "tsc"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.4",
+    "bootstrap": "^5.1.0",
+    "bootstrap-icons": "^1.5.0",
     "next": "latest",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-bootstrap": "^1.6.1",
+    "react-dom": "^17.0.2",
+    "sass": "^1.39.0"
   },
   "devDependencies": {
     "@types/node": "^12.12.21",
