@@ -1,0 +1,100 @@
+@import './variables';
+
+.nav>li>a,
+.nav-dropdown>li>a,
+.nav-column>li>a {
+  color: rgba(102, 102, 102, 0.85);
+  transition: all .2s;
+
+  &:hover {
+    color: $primary-color;
+  }
+}
+
+.nav>li>a {
+  padding: 10px 0;
+  display: inline-block;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.nav-right {
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.nav>li>a {
+  font-weight: 700;
+}
+
+.nav>li.has-icon>a>i {
+  min-width: 1em;
+}
+
+.nav>li>a>i.bi-search {
+  font-size: 1.2em;
+}
+
+.nav-dropdown {
+  font-size: 90%;
+  border-radius: 3px;
+  position: absolute;
+  min-width: 260px;
+  max-height: 0;
+  z-index: 9;
+  padding: 20px 0 20px;
+  opacity: 0;
+  margin: 0;
+  transition: opacity .25s;
+  box-shadow: 1px 1px 15px rgb(0 0 0 / 15%);
+  border: 2px solid #ddd;
+  color: #777;
+  background-color: #fff;
+  text-align: left;
+  display: table;
+  left: -99999px;
+
+  li {
+    padding: 0 20px 10px;
+  }
+}
+
+li.has-dropdown:before {
+  z-index: -999;
+  border-bottom-color: #ddd;
+  border-width: 11px;
+  margin-left: -11px;
+}
+
+li.current-dropdown>.nav-dropdown,
+.next-prev-thumbs li.has-dropdown:hover>.nav-dropdown,
+.no-js li.has-dropdown:hover>.nav-dropdown {
+  opacity: 1;
+  max-height: inherit;
+  left: auto;
+  right: -15px;
+}
+
+li.has-dropdown:after,
+li.has-dropdown:before {
+  bottom: -2px;
+  z-index: 10;
+  opacity: 0;
+  left: 50%;
+  border: solid transparent;
+  content: '';
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+li.current-dropdown.has-dropdown:before,
+li.current-dropdown.has-dropdown:after {
+  transition: opacity .25s;
+  opacity: 1;
+}

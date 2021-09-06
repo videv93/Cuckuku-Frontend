@@ -1,11 +1,15 @@
 import Layout from "../components/Layout";
-import styles from "../styles/pagse/index.module.scss";
+import HomeBanner from "../components/HomeBanner";
+import HomeOurMission from "../components/HomeOurMission";
+import HomeAboutUs from "../components/HomeAboutUs";
+import HomeCustomerReview from "../components/HomeCustomerReview";
 
 const IndexPage = () => (
   <Layout>
-    <div className="container">
-
-    </div>
+    <HomeBanner></HomeBanner>
+    <HomeOurMission></HomeOurMission>
+    <HomeAboutUs></HomeAboutUs>
+    <HomeCustomerReview></HomeCustomerReview>
   </Layout>
 )
 

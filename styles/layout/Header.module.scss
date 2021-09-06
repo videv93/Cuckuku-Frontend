@@ -1,14 +1,88 @@
+.Header,
+.HeaderWrapper {
+  width: 100%;
+  z-index: 30;
+  position: relative;
+  background-size: cover;
+  background-position: 50% 0;
+  transition: background-color .3s, opacity .3s;
+
+}
+
+.Header {
+  &__Wrapper {
+    box-shadow: 1px 1px 10px rgb(0 0 0 / 15%);
+  }
+
+  &__Main {
+    z-index: 10;
+    position: relative;
+    height: 100px;
+  }
+
+  &__Inner {
+    height: 100%;
+  }
+
+  &__Menu {
+    >li {
+      position: relative;
+      margin: 0 20px;
+      line-height: 1rem;
+
+      &:first-child {
+        margin-left: 0 !important;
+      }
+    }
+  }
+
+
+  &__Logo {
+    width: 200px;
+    line-height: 1;
+    margin: 0;
+    margin-left: 0;
+    margin-right: 30px;
+
+    a {
+      text-decoration: none;
+      display: block;
+      color: #446084;
+      font-size: 32px;
+      text-transform: uppercase;
+      font-weight: bolder;
+      margin: 0;
+
+      img {
+        max-height: 100px;
+        display: block;
+        width: auto;
+      }
+    }
+  }
+}
+
 .topNav {
-  padding: 16px 0;
+  padding: 25px 0;
   box-shadow: 1px 1px 10px rgb(0 0 0 / 15%);
+
   .logo {
     width: 200px;
   }
+
   .menu {
     display: flex;
     justify-content: space-between;
-  }
-  .search {
 
+    li {
+      margin: 0 20px;
+
+      a {
+        font-weight: 700;
+        font-size: 1rem;
+      }
+    }
   }
+
+  .search {}
 }

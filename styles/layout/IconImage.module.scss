@@ -1,0 +1,26 @@
+@import '../base/variables';
+
+.Icon {
+  &__Box {
+    position: relative;
+    max-width: 100%;
+    margin: 0 auto 1em;
+  }
+
+  &__Inner {
+    border: 2px dashed #eee !important;
+    border-radius: 100%;
+
+  }
+
+  &__Image {
+    padding-top: .2em;
+    width: 100%;
+  }
+
+  &__Text {
+    p {
+      margin-bottom: 0;
+    }
+  }
+}
