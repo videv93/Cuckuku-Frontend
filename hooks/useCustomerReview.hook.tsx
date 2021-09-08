@@ -1,3 +1,4 @@
+import { sampleCustomerReview } from "../utils/sample-data";
 
 
 const useCustomerReview = () => {
@@ -7,13 +8,15 @@ const useCustomerReview = () => {
     arrows: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
+    slidesToShow: 2,
+    slidesToScroll: 2,
 
   };
 
+  const customerData = sampleCustomerReview;
 
-  return { settings }
+
+  return { settings, customerData }
 }
 
 export default useCustomerReview

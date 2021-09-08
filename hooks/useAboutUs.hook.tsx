@@ -1,32 +1,15 @@
+const useAboutUs = () => {
 
+  const data = {
+    category: "Về chúng tôi",
+    title: "Chúng tôi có một đội ngũ chuyên nghiệp trên nhiều lĩnh vực như thiết kế, marketing, lập trình web và lập trình ứng dụng.",
+    description: [
+      "“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.”",
+      "“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.”"
+    ]
+  }
 
-const useOurMission = () => {
-
-  const listItem = [
-    {
-      src: 'images/work-1.png',
-      width: 240,
-      height: 240,
-      title: '01 – Tìm hiểu thị trường',
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat….'
-    },
-    {
-      src: 'images/work-2.png',
-      width: 240,
-      height: 240,
-      title: '02 – Phân tích tình hình',
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat….'
-    },
-    {
-      src: 'images/work-3.png',
-      width: 240,
-      height: 240,
-      title: '03 – Vận hành sản phẩm',
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat….'
-    }
-  ]
-
-  return { listItem }
+  return { data }
 }
 
-export default useOurMission
+export default useAboutUs

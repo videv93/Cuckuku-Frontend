@@ -1,11 +1,7 @@
 import styles from "../styles/layout/HomeBanner.module.scss";
-import useBanner from "../hooks/useBanner.hook";
 import Button from "./Button"
 
-
 export default function HomeBanner() {
-
-
   return (
     <section className={`${styles.Banner} banner`}>
       <div className={`${styles.Banner__Bg}  container`}>

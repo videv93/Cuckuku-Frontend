@@ -189,7 +189,7 @@ section {
     font-weight: normal !important;
     font-size: 20px;
     line-height: 1;
-    opacity: 0.5;
+    opacity: 0;
     color: $dark;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -199,7 +199,7 @@ section {
 }
 
 .slick-prev {
-  left: 40px;
+  left: -20px;
 
   &:before {
     content: "\f284";
@@ -209,7 +209,7 @@ section {
 
 
 .slick-next {
-  right: 40px;
+  right: -20px;
 
   &:before {
     content: "\f285";
@@ -219,7 +219,7 @@ section {
 
 .slick-slider:hover {
   .slick-next {
-    right: 20px;
+    right: -30px;
 
     &:before {
       color: $red;
@@ -228,7 +228,7 @@ section {
   }
 
   .slick-prev {
-    left: 20px;
+    left: -30px;
     opacity: 1;
 
     &:before {
@@ -238,6 +238,10 @@ section {
   }
 }
 
+.rotate {
+  animation: spin 2s linear infinite;
+
+}
 
 @media (min-width: 850px) {
 
@@ -257,4 +261,11 @@ section {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+
 }

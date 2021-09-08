@@ -51,7 +51,7 @@ input[type='submit'],
 input[type='submit'].button,
 input[type='reset'].button,
 input[type='button'].button {
-  color: #fff;
+  color: $white;
   background-color: $primary-color;
   border-color: rgba(0, 0, 0, 0.05);
 }
@@ -69,7 +69,7 @@ input[type='reset']:hover,
 input[type='button']:hover {
   outline: none;
   opacity: 1;
-  color: #fff;
+  color: $white;
   box-shadow: inset 0 0 0 100px rgb(0 0 0 / 20%);
 }
 

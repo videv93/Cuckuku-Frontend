@@ -4,7 +4,7 @@ import Slider from "react-slick";
 
 export default function HomeCustomerReview() {
 
-  const { settings } = useCustomerReview()
+  const { settings, customerData } = useCustomerReview()
   return (
     <section className={`${styles.CustomerReview}`}>
       <div className="container">
@@ -18,137 +18,49 @@ export default function HomeCustomerReview() {
               </h2>
             </div>
           </div>
-
         </div>
       </div>
-      <Slider {...settings}>
-        <div>
-          <div className="container">
-            <div className="row">
-              <div className="col-12">
-                <div className={`${styles.CustomerReview__Slider}`}>
-                  <div className="row">
-                    <div className="col-sm-12 col-md-6">
+      <div className="container">
+        <div className="row">
+          <div className="col-12">
+            <div className={`${styles.CustomerReview__Slider}`}>
+              <div className="row">
+                <Slider {...settings}>
+                  {customerData.map((customer, index) => (
+                    <div className="col-sm-12 col-md-6" key={`customerDetail_${index}`}>
                       <div className={`${styles.CustomerReview__Item}`}>
                         <div className={`${styles.CustomerReview__Item__Left}`}>
                           <img src="images/customer_1.jpeg" alt="" />
                         </div>
                         <div className={`${styles.CustomerReview__Item__Right}`}>
-                          <div className="star-rating">
+                          <div className={`star-rating rating-${customer.rating}`}>
                             <span>
                               <strong></strong>
                             </span>
                           </div>
                           <div className={`${styles.CustomerReview__Content}`}>
-                            <p>The overall use of flatsome is very VERY useful. It lacks very few, if any, things! I loved it and have created my first ever website Punsteronline.com! Best yet, flatsome gets free updates that are great! (and the support is amazing as well!:)</p>
+                            <p>{customer.comment}</p>
 
                           </div>
                           <div className={`${styles.CustomerReview__Contact}`}>
-                            <strong>Mark Jance</strong>
+                            <strong>{customer.customerName}</strong>
                             <span> / </span>
-                            <span>Facebook</span>
+                            <span>{customer.source}</span>
                           </div>
 
                         </div>
                       </div>
-
                     </div>
-                    <div className="col-sm-12 col-md-6">
-                      <div className={`${styles.CustomerReview__Item}`}>
-                        <div className={`${styles.CustomerReview__Item__Left}`}>
-                          <img src="images/customer_2.jpeg" alt="" />
-                        </div>
-                        <div className={`${styles.CustomerReview__Item__Right}`}>
-                          <div className="star-rating">
-                            <span>
-                              <strong></strong>
-                            </span>
-                          </div>
-                          <div className={`${styles.CustomerReview__Content}`}>
-                            <p>The overall use of flatsome is very VERY useful. It lacks very few, if any, things! I loved it and have created my first ever website Punsteronline.com! Best yet, flatsome gets free updates that are great! (and the support is amazing as well!:)</p>
-
-                          </div>
-                          <div className={`${styles.CustomerReview__Contact}`}>
-                            <strong>Mark Jance</strong>
-                            <span> / </span>
-                            <span>Facebook</span>
-                          </div>
-
-                        </div>
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
+                  ))}
+                </Slider>
               </div>
             </div>
           </div>
         </div>
-        <div>
-          <div className="container">
+      </div>
 
-            <div className="row">
-              <div className="col-12">
-                <div className={`${styles.CustomerReview__Slider}`}>
-                  <div className="row">
-                    <div className="col-sm-12 col-md-6">
-                      <div className={`${styles.CustomerReview__Item}`}>
-                        <div className={`${styles.CustomerReview__Item__Left}`}>
-                          <img src="images/customer_3.jpeg" alt="" />
-                        </div>
-                        <div className={`${styles.CustomerReview__Item__Right}`}>
-                          <div className="star-rating">
-                            <span>
-                              <strong></strong>
-                            </span>
-                          </div>
-                          <div className={`${styles.CustomerReview__Content}`}>
-                            <p>The overall use of flatsome is very VERY useful. It lacks very few, if any, things! I loved it and have created my first ever website Punsteronline.com! Best yet, flatsome gets free updates that are great! (and the support is amazing as well!:)</p>
 
-                          </div>
-                          <div className={`${styles.CustomerReview__Contact}`}>
-                            <strong>Mark Jance</strong>
-                            <span> / </span>
-                            <span>Facebook</span>
-                          </div>
 
-                        </div>
-                      </div>
-
-                    </div>
-                    <div className="col-sm-12 col-md-6">
-                      <div className={`${styles.CustomerReview__Item}`}>
-                        <div className={`${styles.CustomerReview__Item__Left}`}>
-                          <img src="images/customer_4.jpeg" alt="" />
-                        </div>
-                        <div className={`${styles.CustomerReview__Item__Right}`}>
-                          <div className="star-rating">
-                            <span>
-                              <strong></strong>
-                            </span>
-                          </div>
-                          <div className={`${styles.CustomerReview__Content}`}>
-                            <p>The overall use of flatsome is very VERY useful. It lacks very few, if any, things! I loved it and have created my first ever website Punsteronline.com! Best yet, flatsome gets free updates that are great! (and the support is amazing as well!:)</p>
-
-                          </div>
-                          <div className={`${styles.CustomerReview__Contact}`}>
-                            <strong>Mark Jance</strong>
-                            <span> / </span>
-                            <span>Facebook</span>
-                          </div>
-
-                        </div>
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </Slider>
     </section>
   )
 }
