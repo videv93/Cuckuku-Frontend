@@ -19,9 +19,13 @@ export default function Button({
   onClick = console.log,
   type = ''
 }: Props) {
-  return (
-    <a href={href || '#'} target={target} className={`${variant} button`} type={type} style={{ ...style }} onClick={onClick}>
-      <span>{title}</span>
-    </a>
+  return type === 'submit' ? (<button className={`${variant} button`} type='submit' style={{ ...style }} onClick={onClick}>
+    <span>{title}</span>
+  </button>
+  ) : (<a href={href || '#'} target={target} className={`${variant} button`} type={type} style={{ ...style }} onClick={onClick}>
+    <span>{title}</span>
+  </a>
   )
+
+
 }

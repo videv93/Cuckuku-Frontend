@@ -1,9 +1,10 @@
 import { ReactNode } from "react";
 import useSearchBox from "../hooks/useSearchBox.hook";
 import styles from "../styles/layout/SearchBox.module.scss";
+import { useRouter } from "next/router";
 
 export default function SearchBox() {
-  const { formik, onSearch, onRedirect, showSuggest, listAutocomplete, searching } = useSearchBox()
+  const { formik, onSearch, showSuggest, listAutocomplete, searching, onRedirect } = useSearchBox()
   return (
     <aside>
       <div className={`${styles.SearchBox}`}>
@@ -24,7 +25,7 @@ export default function SearchBox() {
                 autoComplete="off"
               />
               {formik.touched.search && formik.errors.search ? (
-                <div>{formik.errors.search}</div>
+                <div className="error-message">{formik.errors.search}</div>
               ) : null}
             </div>
             <div className="flex-col">
@@ -38,7 +39,7 @@ export default function SearchBox() {
                 <div className={`${styles.SearchBox__Suggestions}`}>
                   {listAutocomplete.length ?
                     listAutocomplete.map(suggest => (
-                      <div className={`${styles.SearchBox__Suggestion}`} onClick={() => onRedirect(suggest.slug)}>
+                      <div className={`${styles.SearchBox__Suggestion}`} onClick={() => onRedirect(`${suggest.slug}`)}>
                         <div>
                           {suggest.title}
                         </div>

@@ -4,7 +4,7 @@ import useHeader from "../hooks/useHeader.hook";
 
 
 export default function Header() {
-  const { hideHeader } = useHeader()
+  const { hideHeader, onRedirect } = useHeader()
   return (
     <header className={`${styles.Header} has-sticky sticky-jump`} style={{ marginTop: hideHeader ? 100 : 0 }}>
       <div className={`${styles.Header__Wrapper} header-wrapper ${hideHeader ? 'stuck' : ''}`}>
@@ -17,13 +17,13 @@ export default function Header() {
             </div>
             <div className="flex-col hide-for-medium flex-right">
               <ul className={`nav reset-list-row ${styles.Header__Menu}`}>
-                <li> <a href="http://"> Trang chủ</a></li>
-                <li> <a href="http://"> Giới thiệu</a></li>
-                <li> <a href="http://"> Domain</a></li>
-                <li> <a href="http://"> Hosting</a></li>
-                <li> <a href="http://"> SSL condition</a></li>
-                <li> <a href="http://"> Thiêt kế logo</a></li>
-                <li> <a href="http://"> Liên hệ</a></li>
+                <li> <a href="#" onClick={() => onRedirect('about-us')}> Trang chủ</a></li>
+                <li> <a href="#" onClick={() => onRedirect('about-us')}> Giới thiệu</a></li>
+                <li> <a href="#" onClick={() => onRedirect('about-us')}> Domain</a></li>
+                <li> <a href="#" onClick={() => onRedirect('about-us')}> Hosting</a></li>
+                <li> <a href="#" onClick={() => onRedirect('about-us')}> SSL condition</a></li>
+                <li> <a href="#" onClick={() => onRedirect('about-us')}> Thiêt kế logo</a></li>
+                <li> <a href="/about-us"> Liên hệ</a></li>
                 <li className="has-dropdown">
                   <a><i className="bi bi-search" /></a>
                   <ul className="nav-dropdown nav-dropdown-simple" >

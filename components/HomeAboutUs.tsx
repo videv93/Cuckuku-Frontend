@@ -1,9 +1,9 @@
-import useAboutUs from "../hooks/useAboutUs.hook";
+import useHomeAboutUs from "../hooks/useHomeAboutUs.hook";
 import styles from "../styles/layout/HomeAboutUs.module.scss";
 import TitleLine from "./TitleLine";
 
 export default function HomeAboutUs() {
-  const { data } = useAboutUs()
+  const { data } = useHomeAboutUs()
   return (
     <section className={`${styles.AboutUs}`}>
       <div className="container">
