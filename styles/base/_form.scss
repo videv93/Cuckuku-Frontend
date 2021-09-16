@@ -1,0 +1,65 @@
+.searchform-wrapper {
+  width: 100%;
+}
+
+form {
+  margin: 0;
+
+  input {
+    margin-bottom: 0;
+    box-shadow: inset 0 1px 2px rgb(0 0 0 / 0%);
+
+    &.error {
+      border-color: #b20000;
+      color: #b20000;
+    }
+  }
+
+  textarea {
+    min-height: 100px;
+  }
+
+  button[type='submit'] {
+    display: block;
+    min-width: 50%;
+    margin: 0 auto;
+  }
+
+  .error-message {
+    position: relative;
+    line-height: 1rem;
+    font-size: 0.8rem;
+    border-radius: 3px;
+    opacity: .8;
+    background-color: #f1f1f1;
+    color: #b20000;
+  }
+
+  input[type='email'],
+  input[type='date'],
+  input[type='search'],
+  input[type='number'],
+  input[type='text'],
+  input[type='tel'],
+  input[type='url'],
+  input[type='password'],
+  textarea,
+  select,
+  .select-resize-ghost,
+  .select2-container .select2-choice,
+  .select2-container .select2-selection {
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    padding: 0 .75em;
+    height: 2.507em;
+    font-size: .97em;
+    border-radius: 0;
+    max-width: 100%;
+    width: 100%;
+    vertical-align: middle;
+    background-color: #fff;
+    color: #333;
+    box-shadow: inset 0 1px 2px rgb(0 0 0 / 10%);
+    transition: color .3s, border .3s, background .3s, opacity .3s;
+  }
+}

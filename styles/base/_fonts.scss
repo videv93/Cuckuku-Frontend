@@ -1,1 +1,91 @@
+@font-face {
+	font-family:'SF Pro Text';
+	font-style:normal;
+	font-weight:600;
+	src:local('â˜º'), url("../../public/fonts/sf-pro-text_semibold.woff2") format("woff2");
+	/* (C) 2019 Apple Inc. All rights reserved.
+ */
+}
+
+@font-face {
+	font-family:'SF Pro Text';
+	font-style:normal;
+	font-weight:400;
+	src:url('../../public/fonts/sf-pro-text_regular.woff2');
+	src:local('â˜º'), url("../../public/fonts/sf-pro-text_regular.woff2") format("woff2");
+	/* (C) 2019 Apple Inc. All rights reserved.
+ */
+}
+
+@font-face {
+	font-family:'SF Pro Text';
+	font-style:normal;
+	font-weight:300;
+	src:local('â˜º'), url("../../public/fonts/sf-pro-text_light.woff2") format("woff2");
+	/* (C) 2019 Apple Inc. All rights reserved.
+ */
+}
+
+@font-face {
+	font-family:'SF Pro Icons';
+	font-style:normal;
+	font-weight:600;
+	src:local('â˜º'), url("/wss/fonts/SF-Pro-Icons/v3/sf-pro-icons_semibold.woff2") ;
+	/* (C) 2019 Apple Inc. All rights reserved.
+ */
+}
+
+@font-face {
+	font-family:'SF Pro Icons';
+	font-style:normal;
+	font-weight:400;
+	src:url('/wss/fonts/SF-Pro-Icons/v3/sf-pro-icons_regular.eot');
+	src:local('â˜º'), url("/wss/fonts/SF-Pro-Icons/v3/sf-pro-icons_regular.woff2") ;
+	/* (C) 2019 Apple Inc. All rights reserved.
+ */
+}
+
+
+@font-face {
+	font-family:'SF Pro Icons';
+	font-style:normal;
+	font-weight:300;
+	src:local('â˜º'), url("/wss/fonts/SF-Pro-Icons/v3/sf-pro-icons_light.woff2") ;
+	/* (C) 2019 Apple Inc. All rights reserved.
+ */
+}
+
+@font-face {
+	font-family:'SF Pro Display';
+	font-style:normal;
+	font-weight:600;
+	src:local('â˜º'), url("../../public/fonts/sf-pro-display_semibold.woff2") format("woff2");
+	/* (C) 2019 Apple Inc. All rights reserved.
+ */
+}
+
+
+@font-face {
+	font-family:'SF Pro Display';
+	font-style:normal;
+	font-weight:800;
+	src:local('â˜º'), url("../../public/fonts/sf-pro-display_heavy.woff2") format("woff2");
+	/* (C) 2019 Apple Inc. All rights reserved.
+ */
+}
+
+
+@font-face {
+	font-family:'SF Pro Display';
+	font-style:normal;
+	font-weight:400;
+	src:url('../../public/fonts/sf-pro-display_regular.woff2');
+	src:local('â˜º'), url("../../public/fonts/sf-pro-display_regular.woff2") format("woff2");
+	/* (C) 2019 Apple Inc. All rights reserved.
+ */
+}
+
+
+
 $font-family-default: 'SF Pro Text','SF Pro Icons','Helvetica Neue','Helvetica','Arial',sans-serif
+

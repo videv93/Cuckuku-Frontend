@@ -1,0 +1,80 @@
+@import '../base/variables';
+
+.CustomerReview {
+  padding-top: 80px;
+  padding-bottom: 80px;
+  background-image: url('../../public/images/bg-customer-review.png');
+  background-size: contain;
+  background-repeat: no-repeat, repeat;
+  background-position: left;
+
+  &__Title {
+    text-align: center;
+  }
+
+  h2 {
+    margin-bottom: 50px;
+    font-size: 2.2rem;
+    font-weight: 700;
+  }
+
+  h3 {
+    position: relative;
+    display: block;
+    font-size: 1.2rem;
+    line-height: 20px;
+    color: #525252;
+    margin-bottom: 15px;
+    letter-spacing: .5px;
+  }
+
+  &__Slider {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+  }
+
+  &__Content {
+    line-height: 1.6rem;
+
+    p {
+      margin-bottom: 0;
+      font-style: italic;
+    }
+  }
+
+  &__Contact {
+    padding-top: 15px;
+  }
+
+  &__Item {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    padding-right: 15px;
+    text-align: left;
+
+    &__Left {
+      position: relative;
+      flex: 0 0 auto;
+      margin-bottom: 0;
+      max-width: 120px;
+      border-radius: 999px !important;
+      object-fit: cover;
+
+      img {
+        padding-top: .2em;
+        width: 100%;
+        border-radius: 999px !important;
+        object-fit: cover;
+      }
+    }
+
+    &__Right {
+      flex: 1 1 0px;
+      padding-left: 1em;
+    }
+  }
+}

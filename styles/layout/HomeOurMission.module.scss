@@ -1,0 +1,24 @@
+@import '../base/variables';
+
+.OurMission {
+  background-image: url('../../public/images/bg-our-mission.png');
+  background-size: contain;
+  background-repeat: no-repeat, repeat;
+  background-position: left;
+
+  h2 {
+    margin-bottom: 50px;
+    font-size: 2.2rem;
+    font-weight: 700;
+  }
+
+  h3 {
+    position: relative;
+    display: block;
+    font-size: 1.2rem;
+    line-height: 20px;
+    color: #525252;
+    margin-bottom: 15px;
+    letter-spacing: .5px;
+  }
+}

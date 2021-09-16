@@ -1,0 +1,124 @@
+@import '../base/variables';
+
+.Blog {
+  padding: 80px 0;
+  background-image: url('../../public/images/bg-blog.png');
+  background-size: contain;
+  background-repeat: no-repeat, repeat;
+  background-position: left;
+
+  &__Item {
+    display: block;
+    width: 100%;
+    margin-bottom: 30px;
+    padding: 0 15px;
+
+    &__Inner {
+      width: 100%;
+      position: relative;
+      margin: 0 auto;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgb(0 0 0 / 10%);
+    }
+
+
+    &__ImageWrapper {
+      position: relative;
+      height: auto;
+      margin: 0 auto;
+      overflow: hidden;
+
+    }
+
+    &__Image {
+
+      position: relative;
+      height: auto;
+      overflow: hidden;
+      padding-top: 75%;
+      background-position: 50% 50%;
+      background-size: cover;
+
+      img {
+        border-radius: 15px 15px 0 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        bottom: 0;
+        left: 0;
+        top: 0;
+        position: absolute;
+        object-position: 50% 50%;
+        object-fit: cover;
+        font-family: 'object-fit: cover;';
+      }
+    }
+
+    &__Content {
+      padding: 1.2rem;
+    }
+
+    &__Title {
+
+      h5 {
+        overflow: hidden;
+        line-height: 1.3;
+        margin-top: .1rem;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        height: 1.5rem;
+        margin-bottom: 1rem;
+        font-size: 1.25rem;
+        color: $darker;
+      }
+    }
+
+    &__Description {
+      p {
+        overflow: hidden;
+        margin-bottom: 0.5rem;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        height: 3rem;
+        color: $darker;
+        font-size: 1rem;
+      }
+    }
+
+    &__Button {
+      button {
+        padding: 0;
+        text-transform: none;
+        transition: all 0.3s ease-in-out;
+        color: $color-main;
+
+        &:hover {
+          color: $darker;
+        }
+
+        &:after {
+          content: "\f231";
+          display: inline-block;
+          font-family: bootstrap-icons !important;
+          font-style: normal;
+          font-weight: normal !important;
+          -webkit-font-feature-settings: normal;
+          -moz-font-feature-settings: normal;
+          font-feature-settings: normal;
+          font-variant: normal;
+          text-transform: none;
+          line-height: 1;
+          vertical-align: -.125em;
+          -webkit-font-smoothing: antialiased;
+          color: $red;
+          font-size: 13px;
+          margin-left: 5px;
+        }
+      }
+    }
+  }
+}

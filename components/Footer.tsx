@@ -52,7 +52,7 @@ export default function Footer() {
                   <p>
                     <input name="email" />
                     <label htmlFor="email">
-                      <i className="fas fa-plane"/>
+                      <i className="fas fa-plane" />
                     </label>
                   </p>
                 </form>
