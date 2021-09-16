@@ -17,13 +17,13 @@ export default function Header() {
             </div>
             <div className="flex-col hide-for-medium flex-right">
               <ul className={`nav reset-list-row ${styles.Header__Menu}`}>
-                <li> <a href="#" onClick={() => onRedirect('about-us')}> Trang chủ</a></li>
-                <li> <a href="#" onClick={() => onRedirect('about-us')}> Giới thiệu</a></li>
+                <li> <a href="#" onClick={() => onRedirect('/')}> Trang chủ</a></li>
+                <li> <a href="#" onClick={() => onRedirect('/introduce')}> Giới thiệu</a></li>
                 <li> <a href="#" onClick={() => onRedirect('about-us')}> Domain</a></li>
                 <li> <a href="#" onClick={() => onRedirect('about-us')}> Hosting</a></li>
                 <li> <a href="#" onClick={() => onRedirect('about-us')}> SSL condition</a></li>
                 <li> <a href="#" onClick={() => onRedirect('about-us')}> Thiêt kế logo</a></li>
-                <li> <a href="/about-us"> Liên hệ</a></li>
+                <li> <a href="#" onClick={() => onRedirect('about-us')}> Liên hệ</a></li>
                 <li className="has-dropdown">
                   <a><i className="bi bi-search" /></a>
                   <ul className="nav-dropdown nav-dropdown-simple" >

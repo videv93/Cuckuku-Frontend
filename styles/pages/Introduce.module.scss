@@ -1,0 +1,12 @@
+@import '../base/variables';
+
+.Introduce {
+  padding: 50px 0;
+
+  &__Title {
+    text-align: center;
+    h1 {
+      font-size: 3rem;
+    }
+  }
+}

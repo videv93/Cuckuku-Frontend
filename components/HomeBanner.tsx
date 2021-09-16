@@ -25,7 +25,7 @@ export default function HomeBanner() {
           <div className="col-sm-0 col-md-1"></div>
           <div className={`${styles.Banner__Img} col-sm-12 col-md-5 align-self-center`}>
             <div className={`${styles.Banner__Img__Inner}`}>
-              <img width="840" height="841" src="http://mauweb.monamedia.net/webdep/wp-content/uploads/2018/11/banner-image-1.jpg" className="attachment-original size-original" alt="" srcSet="http://mauweb.monamedia.net/webdep/wp-content/uploads/2018/11/banner-image-1.jpg 840w, http://mauweb.monamedia.net/webdep/wp-content/uploads/2018/11/banner-image-1-150x150.jpg 150w, http://mauweb.monamedia.net/webdep/wp-content/uploads/2018/11/banner-image-1-300x300.jpg 300w, http://mauweb.monamedia.net/webdep/wp-content/uploads/2018/11/banner-image-1-768x769.jpg 768w, http://mauweb.monamedia.net/webdep/wp-content/uploads/2018/11/banner-image-1-600x601.jpg 600w, http://mauweb.monamedia.net/webdep/wp-content/uploads/2018/11/banner-image-1-100x100.jpg 100w" sizes="(max-width: 840px) 100vw, 840px" />
+              <img width="840" height="841" src="images/banner-image-1.jpeg" className="attachment-original size-original" alt="Về chúng tôi" />
             </div>
           </div>
         </div>

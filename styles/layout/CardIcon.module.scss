@@ -1,0 +1,20 @@
+@import '../base/variables';
+
+.CardIcon {
+  text-align: center;
+
+  img {
+    width: 70px;
+    margin: 0 auto 1rem;
+  }
+
+  &__Content {
+    h3 {
+      font-size: 1.3rem;
+    }
+
+    p {
+      margin-bottom: 1.3rem;
+    }
+  }
+}
