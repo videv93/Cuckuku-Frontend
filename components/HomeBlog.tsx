@@ -15,7 +15,7 @@ export default function HomeBlog() {
         <div className="row gx-5">
           <div className="col-sm-12 col-md-10 col-lg-4 align-self-center">
             <TitleLine category={content.category} title={content.title} description={content.description}></TitleLine>
-            <Button title="Xem thêm" variant="primary is-outline"></Button>
+            <Button title="Xem thêm" variant="primary is-outline" href="/blog?s="></Button>
           </div>
           <div className="col-sm-12 col-md-12 col-lg-8 align-self-center">
             <div className="row gx-2">

@@ -11,8 +11,8 @@ export default function Header() {
         <div className={styles.Header__Main} style={{ height: hideHeader ? 70 : 100, background: hideHeader ? 'rgba(255,255,255, 0.9)' : 'white' }}>
           <div className={`${styles.Header__Inner} header-inner flex-row container logo-left medium-logo-center`}>
             <div className={`${styles.Header__Logo} flex-col`}>
-              <a href="" >
-                <img src="images/logo-webdep.png" alt="" />
+              <a href="/">
+                <img src="/images/logo-webdep.png" alt="" />
               </a>
             </div>
             <div className="flex-col hide-for-medium flex-right">

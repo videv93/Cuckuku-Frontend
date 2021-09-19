@@ -18,8 +18,8 @@ export default function HomeBanner() {
               </h3>
               <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
               </p>
-              <Button title="Về chúng tôi"></Button>
-              <Button title="Liên hệ" variant="primary is-outline"></Button>
+              <Button title="Về chúng tôi" href="/introduce"></Button>
+              <Button title="Liên hệ" variant="primary is-outline" href="/about-us"></Button>
             </div>
           </div>
           <div className="col-sm-0 col-md-1"></div>
