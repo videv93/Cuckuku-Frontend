@@ -3,13 +3,14 @@ import Button from "./Button"
 import TitleLine from "./TitleLine";
 import Slider from "react-slick";
 import useBlog from "../hooks/useBlog.hook";
+import Link from "next/link";
 
 export default function HomeBlog() {
-  const { settings, data, content } = useBlog()
+  const { settings, data, content } = useBlog();
+  console.log(data);
 
   return (
     <section className={`${styles.Blog} Blog`}>
-
       <div className="container">
         <div className="row gx-5">
           <div className="col-sm-12 col-md-10 col-lg-4 align-self-center">
@@ -21,7 +22,7 @@ export default function HomeBlog() {
               <Slider {...settings}>
                 {data.map(blog => (
                   <div className="col-sm-12 col-md-6 col-lg-4">
-                    <a href={blog.href || "#"} className={`${styles.Blog__Item}`}>
+                    <a href={`/blog/${blog.slug}`} className={`${styles.Blog__Item}`}>
                       <div className={`${styles.Blog__Item__Inner}`}>
                         <div className={`${styles.Blog__Item__ImageWrapper}`}>
                           <div className={`${styles.Blog__Item__Image}`}>
@@ -36,7 +37,9 @@ export default function HomeBlog() {
                             <p>{blog.description}</p>
                           </div>
                           <div className={`${styles.Blog__Item__Button}`}>
-                            <button>Xem Thêm</button>
+                            <Link href={`/blog/${blog.slug}`}>
+                              <button>Xem Thêm</button>
+                            </Link>
                           </div>
                         </div>
                       </div>

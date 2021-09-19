@@ -1,13 +1,60 @@
 import React from "react";
-import { useRouter } from 'next/router'
+import {gql} from "graphql-request";
+import {GetStaticPaths, GetStaticProps} from "next";
+import client from "../../utils/client";
+import Layout from "../../components/Layout";
 
-const SearchPage = () => {
-  const router = useRouter()
-  const { slug } = router.query
+
+export default function Blog() {
   return (
-    <div>
-      <p>Search text: {slug}</p>
-    </div>
+    <Layout>
+      Blogs
+    </Layout>
   )
 }
-export default SearchPage
+
+export const getStaticProps: GetStaticProps = async({params}) => {
+  const slug = params.slug as string;
+
+  const query = gql`
+    query Post($slug: String!) {
+      post(where: {slug: $slug}) {
+        id
+        tittle
+        thumbnail {
+          url
+        }
+        content {
+          html
+        }
+        createdAt
+        createdBy {
+          name
+        }
+      }
+    }
+  `;
+
+  const data = await client.request(query, {slug});
+  console.log(data);
+
+  return {
+    props: {},
+    revalidate: 60 * 60
+  }
+}
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const query = gql`
+    query Posts {
+      posts {
+        slug
+      }
+    }
+  `;
+  const data = await client.request(query);
+  return {
+    paths: data.posts.map(post => ({ params: { slug: post.slug }})),
+    fallback: "blocking"
+  }
+}
