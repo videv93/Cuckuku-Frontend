@@ -6,10 +6,12 @@ import Layout from "../../components/Layout";
 import SearchBox from "../../components/SearchBox";
 import RecentBlogs from "../../components/RecentBlogs";
 import parse from "html-react-parser";
+import Badge from "../../components/Badge";
+import styles from "../../styles/pages/Blog.module.scss";
 
 export default function Blog({ recentPosts, post }) {
   return (
-    <Layout>
+    <Layout title={post.tittle}>
       <div className="container mt-4">
         <div className="row">
           <div className="col-3">
@@ -20,14 +22,11 @@ export default function Blog({ recentPosts, post }) {
           </div>
           <div className="col-9">
             <div className="container">
-              <span>BLOG</span>
+              <span className={styles.blog}>BLOG</span>
               <h3>{post?.tittle}</h3>
-              <div className="divider divider-small"></div>
-              <div className="contentWrapper">
-                <div className="badge">
-                  <div className="date">21</div>
-                  <div className="day">Th4</div>
-                </div>
+              <div className={styles.divider} />
+              <div className={`relative ${styles.contentWrapper}`}>
+                <Badge date={post?.createdAt} />
                 <img src={post?.thumbnail?.url} alt="" className="thumbnail"/>
                 <div className="content">
                   {parse(post?.content?.html)}

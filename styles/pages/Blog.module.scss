@@ -1,1 +1,13 @@
 @import '../base/variables';
+
+.blog {
+  font-size: 14px;
+}
+
+.divider {
+  width: 48px;
+  height: 4px;
+  background: $color-main;
+  opacity: 0.2;
+  margin: 16px 0 32px;
+}

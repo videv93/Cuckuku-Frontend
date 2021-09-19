@@ -3,6 +3,8 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useRouter } from 'next/router'
 import { useState } from "react";
+import {gql} from "graphql-request";
+import client from "../utils/client";
 
 
 const useSearchBox = () => {
@@ -11,15 +13,25 @@ const useSearchBox = () => {
   const [searching, setSearching] = useState(false)
   const [listAutocomplete, setListAutocomplete] = useState([])
 
-  const onSearch = (search) => {
-    console.log("🚀 ~ file: useSearchBox.hook.tsx ~ line 15 ~ onSearch ~ search", search)
+  const onSearch = async (search) => {
     setShowSuggest(false)
     setSearching(true);
-    setTimeout(() => {
-      setShowSuggest(!!search)
-      setSearching(false)
-      setListAutocomplete(sampleSearchResults)
-    }, 300000)
+    const query = gql`
+      query Posts($search: String!) {
+        posts(orderBy: createdAt_DESC, first: 5, where: {_search: $search}) {
+          slug
+          tittle
+          thumbnail {
+            url
+            id
+          }
+        }
+      }
+      `;
+    const searchResults = await client.request(query, { search });
+    setShowSuggest(!!search)
+    setSearching(false);
+    setListAutocomplete(searchResults.posts)
   }
 
   const formik = useFormik({
@@ -31,6 +43,11 @@ const useSearchBox = () => {
         .required('Vui lòng nhập từ cần tìm kiếm'),
     }),
     onSubmit: values => {
+      const {search} = values;
+      router.push({
+        pathname: '/blog',
+        query: { s: search }
+      })
     },
   });
 

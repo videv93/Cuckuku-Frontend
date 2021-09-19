@@ -1,4 +1,5 @@
-import React, {ReactNode} from 'react'
+import React, {ReactNode} from 'react';
+import {Helmet} from 'react-helmet';
 import Header from "./Header";
 import Footer from "./Footer";
 import styles from "../styles/layout/Layout.module.scss";
@@ -10,6 +11,9 @@ type Props = {
 
 const Layout = ({children, title = 'Thiết kế web đẹp – Hosting / Domain / SSL Cert'}: Props) => (
   <div className={styles.wrapper}>
+    <Helmet>
+      <title>{title}</title>
+    </Helmet>
     <Header />
       <main className={styles.main}>
         {children}

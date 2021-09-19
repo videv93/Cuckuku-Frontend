@@ -8,8 +8,8 @@ export default function SearchBox() {
   return (
     <aside>
       <div className={`${styles.SearchBox}`}>
-        <form onSubmit={formik.handleSubmit} >
-          <div className="flex-row relative">
+        <form onSubmit={formik.handleSubmit}>
+          <div className="flex-row relative align-items-start">
             <div className="flex-col flex-grow">
               <input
                 id="search"
@@ -39,11 +39,12 @@ export default function SearchBox() {
                 <div className={`${styles.SearchBox__Suggestions}`}>
                   {listAutocomplete.length ?
                     listAutocomplete.map(suggest => (
-                      <div className={`${styles.SearchBox__Suggestion}`} onClick={() => onRedirect(`${suggest.slug}`)}>
-                        <div>
-                          {suggest.title}
-                        </div>
-                      </div>
+                      <a href={`/blog/${suggest.slug}`} className={`${styles.SearchBox__Suggestion}`}>
+                        <img src={suggest.thumbnail?.url} className={styles.SearchBox__Suggestion__Thumbnail} alt="" />
+                        <span className={styles.SearchBox__Suggestion__Title}>
+                          {suggest.tittle}
+                        </span>
+                      </a>
                     )) : (<div className={`${styles.SearchBox__Suggestion}`}>
                       <div>
                         Không có sản phẩm nào.

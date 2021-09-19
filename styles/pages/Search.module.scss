@@ -1,0 +1,16 @@
+@import "../base/variables";
+
+.container {
+  .thumbnail {
+    height: 128px;
+    width: 100%;
+    object-fit: cover;
+  }
+  .title {
+    margin-top: 8px;
+  }
+  .description {
+    margin-top: 8px;
+    font-size: 14px;
+  }
+}
