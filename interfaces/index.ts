@@ -8,3 +8,15 @@ export type User = {
   id: number
   name: string
 }
+
+export interface Blog {
+  id: string,
+  slug: string,
+  tittle: string,
+  description: string,
+  thumbnail: {
+    url: string
+  },
+  content: string,
+  createdAt: string
+}
