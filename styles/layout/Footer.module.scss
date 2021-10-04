@@ -24,6 +24,17 @@
         margin-top: 16px;
       }
     }
+    .blogs {
+      .item {
+        .title {
+          margin: 0;
+        }
+        span {
+          font-size: 12px;
+          color: #004a91;
+        }
+      }
+    }
     .subscription {
       .social {
         .icon {

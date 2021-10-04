@@ -24,7 +24,7 @@ export default function HomeCustomerReview() {
         <div className="row">
           <div className="col-12">
             <div className={`${styles.CustomerReview__Slider}`}>
-              <div className="row">
+              <div className="row w-100">
                 <Slider {...settings}>
                   {customerData.map((customer, index) => (
                     <div className="col-sm-12 col-md-6" key={`customerDetail_${index}`}>

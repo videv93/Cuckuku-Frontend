@@ -14,13 +14,13 @@ export default function Blog({ recentPosts, post }) {
     <Layout title={post.tittle}>
       <div className="container mt-4">
         <div className="row">
-          <div className="col-3">
+          <div className="col-sm-12 col-md-3 order-sm-2">
             <div className="container">
               <SearchBox />
               <RecentBlogs blogs={recentPosts} />
             </div>
           </div>
-          <div className="col-9">
+          <div className="col-sm-12 col-md-9">
             <div className="container">
               <span className={styles.blog}>BLOG</span>
               <h3>{post?.tittle}</h3>

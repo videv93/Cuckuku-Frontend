@@ -10,7 +10,16 @@ const useCustomerReview = () => {
     speed: 500,
     slidesToShow: 2,
     slidesToScroll: 2,
-
+    responsive: [
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          initialSlide: 1
+        }
+      }
+    ]
   };
 
   const customerData = sampleCustomerReview;

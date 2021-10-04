@@ -12,14 +12,14 @@ export default function Blogs({recentPosts, searchPosts}) {
     <Layout>
       <div className="container mt-4">
         <div className="row">
-          <div className="col-3">
+          <div className="col-sm-12 col-md-3">
             <div className="container">
               <SearchBox />
               <RecentBlogs blogs={recentPosts} />
             </div>
           </div>
-          <div className="col-9">
-            <div className="row">
+          <div className="col-sm-12 col-md-9 mt-4 mt-md-0">
+            <div className="row px-4">
               {(searchPosts || []).map(post => (
                 <a href={`/blog/${post.slug}`} className={`col-xs-12 col-md-4 relative ${styles.container}`}>
                   <Badge date={post.createdAt}/>

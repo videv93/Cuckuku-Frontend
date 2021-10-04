@@ -9,21 +9,22 @@ export default function Header() {
     <header className={`${styles.Header} has-sticky sticky-jump`} style={{ marginTop: hideHeader ? 100 : 0 }}>
       <div className={`${styles.Header__Wrapper} header-wrapper ${hideHeader ? 'stuck' : ''}`}>
         <div className={styles.Header__Main} style={{ height: hideHeader ? 70 : 100, background: hideHeader ? 'rgba(255,255,255, 0.9)' : 'white' }}>
-          <div className={`${styles.Header__Inner} header-inner flex-row container logo-left medium-logo-center`}>
-            <div className={`${styles.Header__Logo} flex-col`}>
-              <a href="/">
-                <img src="/images/logo-webdep.png" alt="" />
-              </a>
-            </div>
-            <div className="flex-col hide-for-medium flex-right">
-              <ul className={`nav reset-list-row ${styles.Header__Menu}`}>
-                <li> <a href="#" onClick={() => onRedirect('/')}> Trang chủ</a></li>
-                <li> <a href="#" onClick={() => onRedirect('/introduce')}> Giới thiệu</a></li>
-                <li> <a href="#" onClick={() => onRedirect('about-us')}> Domain</a></li>
-                <li> <a href="#" onClick={() => onRedirect('about-us')}> Hosting</a></li>
-                <li> <a href="#" onClick={() => onRedirect('about-us')}> SSL condition</a></li>
-                <li> <a href="#" onClick={() => onRedirect('about-us')}> Thiêt kế logo</a></li>
-                <li> <a href="#" onClick={() => onRedirect('about-us')}> Liên hệ</a></li>
+          <nav className={`${styles.Header__Inner} header-inner flex-row container logo-left medium-logo-center navbar navbar-expand-lg navbar-light`}>
+            <a className={`${styles.Header__Logo} flex-col navbar-brand`} href="/">
+              <img src="/images/logo-webdep.png" alt="" />
+            </a>
+            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span className="navbar-toggler-icon" />
+            </button>
+            <div className="flex-col hide-for-medium flex-right collapse navbar-collapse" id="navbarNav">
+              <ul className={`nav navbar-nav reset-list-row ${styles.Header__Menu}`}>
+                <li className="nav-item"> <a className="nav-link" href="#" onClick={() => onRedirect('/')}> Trang chủ</a></li>
+                <li className="nav-item"> <a className="nav-link" href="#" onClick={() => onRedirect('/introduce')}> Giới thiệu</a></li>
+                <li className="nav-item"> <a className="nav-link" href="#" onClick={() => onRedirect('about-us')}> Domain</a></li>
+                <li className="nav-item"> <a className="nav-link" href="#" onClick={() => onRedirect('about-us')}> Hosting</a></li>
+                <li className="nav-item"> <a className="nav-link" href="#" onClick={() => onRedirect('about-us')}> SSL condition</a></li>
+                <li className="nav-item"> <a className="nav-link" href="#" onClick={() => onRedirect('about-us')}> Thiêt kế logo</a></li>
+                <li className="nav-item"> <a className="nav-link" href="#" onClick={() => onRedirect('about-us')}> Liên hệ</a></li>
                 <li className="has-dropdown">
                   <a><i className="bi bi-search" /></a>
                   <ul className="nav-dropdown nav-dropdown-simple" >
@@ -48,8 +49,7 @@ export default function Header() {
                 </li>
               </ul>
             </div>
-
-          </div>
+          </nav>
         </div>
       </div>
     </header>
