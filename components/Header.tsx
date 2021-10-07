@@ -18,13 +18,11 @@ export default function Header() {
             </button>
             <div className="flex-col hide-for-medium flex-right collapse navbar-collapse" id="navbarNav">
               <ul className={`nav navbar-nav reset-list-row ${styles.Header__Menu}`}>
-                <li className="nav-item"> <a className="nav-link" href="#" onClick={() => onRedirect('/')}> Trang chủ</a></li>
-                <li className="nav-item"> <a className="nav-link" href="#" onClick={() => onRedirect('/introduce')}> Giới thiệu</a></li>
-                <li className="nav-item"> <a className="nav-link" href="#" onClick={() => onRedirect('about-us')}> Domain</a></li>
-                <li className="nav-item"> <a className="nav-link" href="#" onClick={() => onRedirect('about-us')}> Hosting</a></li>
-                <li className="nav-item"> <a className="nav-link" href="#" onClick={() => onRedirect('about-us')}> SSL condition</a></li>
-                <li className="nav-item"> <a className="nav-link" href="#" onClick={() => onRedirect('about-us')}> Thiêt kế logo</a></li>
-                <li className="nav-item"> <a className="nav-link" href="#" onClick={() => onRedirect('about-us')}> Liên hệ</a></li>
+                <li className="nav-item"> <a className="nav-link" href="/">Trang chủ</a></li>
+                <li className="nav-item"> <a className="nav-link" href="/introduce">Giới thiệu</a></li>
+                <li className="nav-item"> <a className="nav-link" href="/product">Sản phẩm</a></li>
+                <li className="nav-item"><a className="nav-link" href="/blog?s=">Blog</a></li>
+                <li className="nav-item"> <a className="nav-link" href="/about-us">Liên hệ</a></li>
                 <li className="has-dropdown">
                   <a><i className="bi bi-search" /></a>
                   <ul className="nav-dropdown nav-dropdown-simple" >

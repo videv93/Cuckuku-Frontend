@@ -7,8 +7,6 @@ import Link from "next/link";
 
 export default function HomeBlog() {
   const { settings, data, content } = useBlog();
-  console.log(data);
-
   return (
     <section className={`${styles.Blog} Blog`}>
       <div className="container">

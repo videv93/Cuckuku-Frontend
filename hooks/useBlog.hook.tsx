@@ -43,7 +43,6 @@ const useBlog = () => {
         description: post.description,
         img: post.thumbnail?.url
       }));
-      console.log(blogs)
       setBlogs(blogs);
     });
     const queryRecentPosts = gql`
@@ -67,7 +66,7 @@ const useBlog = () => {
   const content = {
     category: "Chuyên Nghiệp",
     title: "Nơi chia sẽ những thông tin bổ ích",
-    description: ["Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."]
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
   }
   return { settings, data: blogs, recentBlogs, content }
 }

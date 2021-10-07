@@ -1,14 +1,15 @@
 import { ReactNode } from "react";
 import styles from "../styles/layout/TitleLine.module.scss";
+import parse from "html-react-parser";
 
 type Props = {
   children?: ReactNode;
   title: string;
-  description: string[];
+  description: string;
   category: string;
 }
 
-export default function TitleLine({ children, title = '', description, category = '' }: Props) {
+export default function TitleLine({ title = '', description, category = '' }: Props) {
   return (
     <div>
       <div className={`${styles.TitleLine__Title}`}>
@@ -17,11 +18,7 @@ export default function TitleLine({ children, title = '', description, category 
         </h3>
         <h2>{title}</h2>
       </div>
-      {description.map(des => (
-        <p>
-          {des}
-        </p>
-      ))}
+      {parse(description)}
     </div>
   )
 }

@@ -12,9 +12,8 @@ const AboutUs = () => {
   const { s } = router.query
   const { formik } = useAboutUs()
   return (
-    <Layout>
-      <PageHeader title="LIÊN HỆ"
-        breadcrumbs={{ title: 'Trang chủ', url: '/' }} />
+    <>
+      <PageHeader title="LIÊN HỆ" breadcrumbs={{ title: 'Trang chủ', url: '/' }} />
       <div className="container mt-5 mb-5">
         <div className="row">
           <div className="col-sm-12 col-md-12 col-lg-6">
@@ -157,7 +156,7 @@ const AboutUs = () => {
         </div>
       </div>
 
-    </Layout >
+    </ >
   )
 }
 export default AboutUs

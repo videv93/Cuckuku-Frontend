@@ -1,0 +1,49 @@
+@import "../base/variables";
+
+.container {
+  padding: 32px;
+  margin-top: 16px;
+  color: white;
+  height: 320px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  box-shadow: 3px 3px 20px 0 rgb(0 0 0 / 30%);
+  position: relative;
+
+  .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    filter: blur(1px);
+    -webkit-filter: blur(1px);
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .title {
+    margin-top: 16px;
+    color: $white;
+    z-index: 1;
+  }
+  .description {
+    margin-top: 16px;
+    z-index: 1;
+  }
+  .viewMore {
+    position: absolute;
+    bottom: 32px;
+    width: fit-content;
+    color: $primary-color;
+    background-color: $white;
+    border-radius: 8px;
+    text-transform: unset;
+    margin-top: 32px;
+    padding: 8px 16px;
+    z-index: 1;
+  }
+}

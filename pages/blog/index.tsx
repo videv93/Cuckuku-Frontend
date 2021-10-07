@@ -9,35 +9,32 @@ import Badge from "../../components/Badge";
 
 export default function Blogs({recentPosts, searchPosts}) {
   return (
-    <Layout>
-      <div className="container mt-4">
-        <div className="row">
-          <div className="col-sm-12 col-md-3">
-            <div className="container">
-              <SearchBox />
-              <RecentBlogs blogs={recentPosts} />
-            </div>
+    <div className="container mt-4">
+      <div className="row">
+        <div className="col-sm-12 col-md-3">
+          <div className="container">
+            <SearchBox />
+            <RecentBlogs blogs={recentPosts} />
           </div>
-          <div className="col-sm-12 col-md-9 mt-4 mt-md-0">
-            <div className="row px-4">
-              {(searchPosts || []).map(post => (
-                <a href={`/blog/${post.slug}`} className={`col-xs-12 col-md-4 relative ${styles.container}`}>
-                  <Badge date={post.createdAt}/>
-                  <img className={styles.thumbnail} src={post.thumbnail?.url} alt="" />
-                  <h5 className={styles.title}>{post.tittle}</h5>
-                  <p className={styles.description}>{post.description}</p>
-                </a>
-              ))}
-            </div>
+        </div>
+        <div className="col-sm-12 col-md-9 mt-4 mt-md-0">
+          <div className="row px-4">
+            {(searchPosts || []).map(post => (
+              <a href={`/blog/${post.slug}`} className={`col-xs-12 col-md-4 relative ${styles.container}`}>
+                <Badge date={post.createdAt}/>
+                <img className={styles.thumbnail} src={post.thumbnail?.url} alt="" />
+                <h5 className={styles.title}>{post.tittle}</h5>
+                <p className={styles.description}>{post.description}</p>
+              </a>
+            ))}
           </div>
         </div>
       </div>
-    </Layout>
+    </div>
   )
 }
 
 export async function getServerSideProps(context) {
-  console.log(context.query);
   const { s, page } = context.query;
   const querySearchPosts = gql`
     query Posts($search: String!, $skip: Int) {

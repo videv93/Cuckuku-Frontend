@@ -3,7 +3,7 @@ import useOurMission from "../hooks/useOurMission.hook";
 import IconImage from "./IconImage"
 
 
-export default function HomeOurMission() {
+export default function HomeOurMission({ aboutUs }) {
 
   const { listItem } = useOurMission()
   return (
@@ -22,16 +22,42 @@ export default function HomeOurMission() {
           </div>
         </div>
         <div className="row">
-          {
-            listItem.map(item =>
-              <div className="col-md-4 col-sm-12">
-                <div className="col-inner text-center">
-                  <IconImage width={item.width} height={item.height} src={item.src} alt={item.title} title={item.title} description={item.description} ></IconImage>
-                </div>
-              </div>
-            )
-          }
-
+          <div className="col-md-4 col-sm-12">
+            <div className="col-inner text-center">
+              <IconImage
+                width={240}
+                height={240}
+                src={aboutUs.jobThumbnail1?.url}
+                alt={aboutUs.jobTitle1}
+                title={aboutUs.jobTitle1}
+                description={aboutUs.jobDescription1}
+              />
+            </div>
+          </div>
+          <div className="col-md-4 col-sm-12">
+            <div className="col-inner text-center">
+              <IconImage
+                width={240}
+                height={240}
+                src={aboutUs.jobThumbnail2?.url}
+                alt={aboutUs.jobTitle2}
+                title={aboutUs.jobTitle2}
+                description={aboutUs.jobDescription2}
+              />
+            </div>
+          </div>
+          <div className="col-md-4 col-sm-12">
+            <div className="col-inner text-center">
+              <IconImage
+                width={240}
+                height={240}
+                src={aboutUs.jobThumbnail3?.url}
+                alt={aboutUs.jobTitle3}
+                title={aboutUs.jobTitle3}
+                description={aboutUs.jobDescription3}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </section>

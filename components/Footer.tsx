@@ -1,8 +1,9 @@
 import styles from "../styles/layout/Footer.module.scss";
 import moment from "moment";
+import React from "react";
 
 export default function Footer(props) {
-  const { blogs } = props;
+  const { blogs, company } = props;
   return (
     <footer className={styles.footer}>
       <section className={styles.main}>
@@ -14,19 +15,19 @@ export default function Footer(props) {
                 <ul className="reset-list mt-4">
                   <li className={styles.item}>
                     <img className={styles.image} src="/images/address.svg" alt="address" />
-                    <p className={styles.text}>319 C16 Lý Thường Kiệt, Phường 15, Quận 11, Tp.HCM</p>
+                    <p className={styles.text}>{company?.address}</p>
                   </li>
                   <li className={styles.item}>
                     <img className={styles.image} src="/images/phone.svg" alt="phone" />
-                    <p className={styles.text}>076 922 0162</p>
+                    <p className={styles.text}>{company?.phone}</p>
                   </li>
                   <li className={styles.item}>
                     <img className={styles.image} src="/images/email.svg" alt="email" />
-                    <p className={styles.text}>demonhunter@gmail.com</p>
+                    <p className={styles.text}>{company?.email}</p>
                   </li>
                   <li className={styles.item}>
                     <img className={styles.image} src="/images/skype.svg" alt="skype" />
-                    <p className={styles.text}>demonhunterp</p>
+                    <p className={styles.text}>{company?.skype}</p>
                   </li>
                 </ul>
               </div>
@@ -37,8 +38,8 @@ export default function Footer(props) {
                 <ul className="reset-list">
                   <li className={styles.item}><a href="/">Trang chủ</a></li>
                   <li className={styles.item}><a href="/introduce">Giới thiệu</a></li>
+                  <li className={styles.item}><a href="/product">Sản phẩm</a></li>
                   <li className={styles.item}><a href="/blog?s=">Blog chia sẻ</a></li>
-                  <li className={styles.item}><a href="/blog?s=">Tin tức sự kiện</a></li>
                   <li className={styles.item}><a href="/about-us">Liên hệ</a></li>
                 </ul>
               </div>
@@ -69,9 +70,9 @@ export default function Footer(props) {
                 </form>
                 <h3>Kết nối với chúng tôi</h3>
                 <div className={styles.social}>
-                  <a className={styles.icon} href="https://www.facebook.com/"><i className="bi bi-facebook" /></a>
-                  <a className={styles.icon} href="https://www.instagram.com/"><i className="bi bi-instagram" /></a>
-                  <a className={styles.icon} href="https://twitter.com/"><i className="bi bi-twitter" /></a>
+                  <a className={styles.icon} href={company?.facebook}><i className="bi bi-facebook" /></a>
+                  <a className={styles.icon} href={company?.instagram}><i className="bi bi-instagram" /></a>
+                  <a className={styles.icon} href={company?.twitter}><i className="bi bi-twitter" /></a>
                 </div>
               </div>
             </div>

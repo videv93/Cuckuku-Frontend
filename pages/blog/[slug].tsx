@@ -11,32 +11,30 @@ import styles from "../../styles/pages/Blog.module.scss";
 
 export default function Blog({ recentPosts, post }) {
   return (
-    <Layout title={post.tittle}>
-      <div className="container mt-4">
-        <div className="row">
-          <div className="col-sm-12 col-md-3 order-sm-2">
-            <div className="container">
-              <SearchBox />
-              <RecentBlogs blogs={recentPosts} />
-            </div>
+    <div className="container mt-4">
+      <div className="row">
+        <div className="col-sm-12 col-md-3 order-sm-2">
+          <div className="container">
+            <SearchBox />
+            <RecentBlogs blogs={recentPosts} />
           </div>
-          <div className="col-sm-12 col-md-9">
-            <div className="container">
-              <span className={styles.blog}>BLOG</span>
-              <h3>{post?.tittle}</h3>
-              <div className={styles.divider} />
-              <div className={`relative ${styles.contentWrapper}`}>
-                <Badge date={post?.createdAt} />
-                <img src={post?.thumbnail?.url} alt="" className="thumbnail"/>
-                <div className="content">
-                  {parse(post?.content?.html)}
-                </div>
+        </div>
+        <div className="col-sm-12 col-md-9">
+          <div className="container">
+            <span className={styles.blog}>BLOG</span>
+            <h3>{post?.tittle}</h3>
+            <div className={styles.divider} />
+            <div className={`relative ${styles.contentWrapper}`}>
+              <Badge date={post?.createdAt} />
+              <img src={post?.thumbnail?.url} alt="" className="thumbnail"/>
+              <div className="content">
+                {parse(post?.content?.html)}
               </div>
             </div>
           </div>
         </div>
       </div>
-    </Layout>
+    </div>
   )
 }
 
@@ -75,7 +73,6 @@ export const getStaticProps: GetStaticProps = async({params}) => {
     }
   `
   const post = await client.request(query, {slug});
-  console.log('post', post.post);
   const recentPosts = await client.request(queryRecentPosts);
   return {
     props: {

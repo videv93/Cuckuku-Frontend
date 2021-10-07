@@ -1,7 +1,7 @@
 import styles from "../styles/layout/HomeBanner.module.scss";
 import Button from "./Button"
 
-export default function HomeBanner() {
+export default function HomeBanner({banner}) {
   return (
     <section className={`${styles.Banner} banner`}>
       <div className={`${styles.Banner__Bg}  container`}>
@@ -10,14 +10,13 @@ export default function HomeBanner() {
             <div className="text-inner text-left">
               <h2 className="uppercase">
                 <strong>
-                  Chuyên Nghiệp
+                  {banner?.title}
                 </strong>
               </h2>
               <h3>
-                Trong từng sản phẩm
+                {banner?.subTitle}
               </h3>
-              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-              </p>
+              <p>{banner?.description}</p>
               <Button title="Về chúng tôi" href="/introduce"></Button>
               <Button title="Liên hệ" variant="primary is-outline" href="/about-us"></Button>
             </div>
@@ -25,7 +24,7 @@ export default function HomeBanner() {
           <div className="col-sm-0 col-md-1"></div>
           <div className={`${styles.Banner__Img} col-sm-12 col-md-5 align-self-center`}>
             <div className={`${styles.Banner__Img__Inner}`}>
-              <img width="840" height="841" src="images/banner-image-1.jpeg" className="attachment-original size-original" alt="Về chúng tôi" />
+              <img width="840" height="841" src={banner.thumbnail?.url} className="attachment-original size-original" alt="Về chúng tôi" />
             </div>
           </div>
         </div>

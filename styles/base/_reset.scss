@@ -241,7 +241,10 @@ section {
 
 .rotate {
   animation: spin 2s linear infinite;
+}
 
+.navbar-collapse {
+  flex-grow: unset;
 }
 
 @media (min-width: 850px) {
