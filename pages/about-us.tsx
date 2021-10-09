@@ -1,16 +1,18 @@
 import React from "react";
 import { useRouter } from 'next/router'
 import PageHeader from "../components/PageHeader";
-import Layout from "../components/Layout";
 import GoogleMapReact from 'google-map-react';
 import styles from '../styles/pages/AboutUs.module.scss'
 import useAboutUs from "../hooks/useAboutUs.hook";
 import Button from "../components/Button"
+import useCompany from "../hooks/useCompany.hook";
+import Marker from "../components/Marker";
 
 const AboutUs = () => {
   const router = useRouter()
   const { s } = router.query
-  const { formik } = useAboutUs()
+  const { formik, loading } = useAboutUs();
+  const { company } = useCompany();
   return (
     <>
       <PageHeader title="LIÊN HỆ" breadcrumbs={{ title: 'Trang chủ', url: '/' }} />
@@ -19,14 +21,18 @@ const AboutUs = () => {
           <div className="col-sm-12 col-md-12 col-lg-6">
             <div style={{ height: '520px', width: '100%' }}>
               <GoogleMapReact
-                bootstrapURLKeys={{ key: 'AIzaSyAA9JjiLtqCv24lzKUI7vzwb2LCWGDpn0o' }}
-                defaultCenter={{
-                  lat: 59.95,
-                  lng: 30.33
+                bootstrapURLKeys={{ key: 'AIzaSyDT4JaUWd9KFoVrQ4B225uEr4vjfC4t1Tk' }}
+                center={{
+                  lat: company?.lat,
+                  lng: company?.lng,
                 }}
-                defaultZoom={11}
+                defaultZoom={16}
               >
-
+                <Marker
+                  text={company?.address}
+                  lat={company?.lat}
+                  lng={company?.lng}
+                />
               </GoogleMapReact>
             </div>
           </div>
@@ -42,19 +48,19 @@ const AboutUs = () => {
                   <ul className="reset-list mt-4">
                     <li className={styles.AboutUs__Contact__Item}>
                       <img className={styles.AboutUs__Contact__Image} src="images/address.svg" alt="address" />
-                      <p className={styles.AboutUs__Contact__Text}>319 C16 Lý Thường Kiệt, Phường 15, Quận 11, Tp.HCM</p>
+                      <a href={`https://maps.google.com/?q=${company?.address}`} target="_blank" className={styles.AboutUs__Contact__Text}>{company?.address}</a>
                     </li>
                     <li className={styles.AboutUs__Contact__Item}>
                       <img className={styles.AboutUs__Contact__Image} src="images/phone.svg" alt="phone" />
-                      <p className={styles.AboutUs__Contact__Text}>076 922 0162</p>
+                      <p className={styles.AboutUs__Contact__Text}>{company?.phone}</p>
                     </li>
                     <li className={styles.AboutUs__Contact__Item}>
                       <img className={styles.AboutUs__Contact__Image} src="images/email.svg" alt="email" />
-                      <p className={styles.AboutUs__Contact__Text}>demonhunter@gmail.com</p>
+                      <p className={styles.AboutUs__Contact__Text}>{company?.email}</p>
                     </li>
                     <li className={styles.AboutUs__Contact__Item}>
                       <img className={styles.AboutUs__Contact__Image} src="images/skype.svg" alt="skype" />
-                      <p className={styles.AboutUs__Contact__Text}>demonhunterp</p>
+                      <p className={styles.AboutUs__Contact__Text}>{company?.skype}</p>
                     </li>
                   </ul>
                 </div>
@@ -144,19 +150,22 @@ const AboutUs = () => {
                         <div className="error-message">{formik.errors.message}</div>
                       ) : null}
                     </div>
+                    <div className="col-sm-12 col-md-12 col-lg-12 pb-4">
+                      <input type="file" className="attachments" id="attachments" name="attachments" multiple onChange={(event) => {
+                        formik.setFieldValue("attachments", event.currentTarget.files);
+                      }} />
+                    </div>
                     <div className="col-12">
-                      <Button type="submit" title="Gởi"></Button>
+                      <Button type="submit" title="Gởi" loading={loading} />
                     </div>
                   </div>
                 </form>
               </div>
             </div>
-
           </div>
         </div>
       </div>
-
-    </ >
+    </>
   )
 }
 export default AboutUs

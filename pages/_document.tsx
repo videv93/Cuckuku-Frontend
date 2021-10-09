@@ -23,12 +23,11 @@ export default class extends Document {
           (function(){
           var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
           s1.async=true;
-          s1.src='https://embed.tawk.to/6134c96e649e0a0a5cd4b3fb/1fer35mep';
+          s1.src='https://embed.tawk.to/6161646c86aee40a5735b49c/1fhi70iqs';
           s1.charset='UTF-8';
           s1.setAttribute('crossorigin','*');
           s0.parentNode.insertBefore(s1,s0);
           })();
-          </script>
           `
         }
         </Safe.script>

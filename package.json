@@ -8,9 +8,12 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.4",
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "animate.css": "^4.1.1",
+    "axios": "^0.22.0",
     "bootstrap": "^5.1.0",
     "bootstrap-icons": "^1.5.0",
+    "firebase": "^9.1.1",
     "formik": "^2.2.9",
     "google-map-react": "^2.1.10",
     "graphql": "^15.5.3",

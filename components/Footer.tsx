@@ -1,9 +1,12 @@
 import styles from "../styles/layout/Footer.module.scss";
 import moment from "moment";
 import React from "react";
+import useSubscription from "../hooks/useSubscription.hook";
+import {Spinner} from "react-bootstrap";
 
 export default function Footer(props) {
   const { blogs, company } = props;
+  const { formik, loading } = useSubscription();
   return (
     <footer className={styles.footer}>
       <section className={styles.main}>
@@ -15,7 +18,9 @@ export default function Footer(props) {
                 <ul className="reset-list mt-4">
                   <li className={styles.item}>
                     <img className={styles.image} src="/images/address.svg" alt="address" />
-                    <p className={styles.text}>{company?.address}</p>
+                    <p>
+                      <a href={`https://maps.google.com/?q=${company?.address}`} target="_blank" className={styles.text}>{company?.address}</a>
+                    </p>
                   </li>
                   <li className={styles.item}>
                     <img className={styles.image} src="/images/phone.svg" alt="phone" />
@@ -60,11 +65,27 @@ export default function Footer(props) {
               <div className={styles.subscription}>
                 <h3>Đăng ký</h3>
                 <p>Đăng ký để nhận được thông tin mới nhất từ chúng tôi</p>
-                <form>
-                  <p>
-                    <input name="email" className="w-100"/>
-                    <label htmlFor="email">
-                      <i className="fas fa-plane" />
+                <form onSubmit={formik.handleSubmit}>
+                  <p className={styles.input}>
+                    <input
+                      name="email"
+                      placeholder="Email..."
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      value={formik.values.email}
+                      className="w-100"/>
+                    <label className={styles.label} htmlFor="email" onClick={() => formik.submitForm()}>
+                      {loading ? (
+                        <Spinner
+                          as="span"
+                          animation="border"
+                          size="sm"
+                          role="status"
+                          aria-hidden="true"
+                        />
+                      ) : (
+                        <i className="bi bi-telegram" />
+                      )}
                     </label>
                   </p>
                 </form>

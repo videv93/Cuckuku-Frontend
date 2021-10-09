@@ -4,3 +4,22 @@
 .thumbnail {
   width: 100%;
 }
+
+//.number {
+//  & {
+//    animation: counter 5s infinite alternate ease-in-out;
+//    counter-reset: num var(--num);
+//  }
+//  &::after {
+//    content: counter(num);
+//  }
+//
+//  @keyframes counter {
+//    from {
+//      --num: 0;
+//    }
+//    to {
+//      --num: 100;
+//    }
+//  }
+//}

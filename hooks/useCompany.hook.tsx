@@ -19,6 +19,8 @@ export default function useCompany() {
         phone
         skype
         twitter
+        lat
+        lng
       }    
     }
     `;

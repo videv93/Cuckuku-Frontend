@@ -10,7 +10,7 @@
       }
       .item {
         display: flex;
-        align-items: flex-start;
+        align-items: baseline;
         .image {
           width: 14px;
         }
@@ -36,6 +36,16 @@
       }
     }
     .subscription {
+      .input {
+        display: flex;
+        height: 32px;
+        position: relative;
+        .label {
+          position: absolute;
+          right: 8px;
+          top: 4px;
+        }
+      }
       .social {
         .icon {
           width: 16px;

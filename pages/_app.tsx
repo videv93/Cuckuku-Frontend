@@ -1,16 +1,20 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import "bootstrap-icons/font/bootstrap-icons.css";
+import '../node_modules/@fortawesome/fontawesome-svg-core/styles.css'
 import 'animate.css'
 import '../styles/main.scss';
 import Layout from "../components/Layout";
 import {gql} from "graphql-request";
 import client from "../utils/client";
+import ModalProvider from "../contexts/Modal.provider";
 
 export default function MyApp({ Component, pageProps }) {
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <ModalProvider>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </ModalProvider>
   )
 }
 
