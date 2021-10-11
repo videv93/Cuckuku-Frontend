@@ -8,7 +8,7 @@ export default function Products({products}) {
     <div className="container mt-4 px-4">
       <div className="row">
         {(products || []).map(product => (
-          <div className="col-sm-12 col-md-4">
+          <div className="col-sm-12 col-md-4" key={product.id}>
             <Product product={product} />
           </div>
         ))}

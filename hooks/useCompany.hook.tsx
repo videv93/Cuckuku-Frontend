@@ -3,7 +3,7 @@ import {gql} from "graphql-request";
 import client from "../utils/client";
 
 export default function useCompany() {
-  const [company, setCompany] = useState();
+  const [company, setCompany] = useState({});
   useEffect(() => {
     const queryCompany = gql`
     query {
@@ -26,7 +26,7 @@ export default function useCompany() {
     `;
     client.request(queryCompany).then(data => {
       if (data) {
-        setCompany(data.company)
+        setCompany(data.company || {})
       }
     });
   }, [])

@@ -19,7 +19,7 @@ export default function HomeBlog() {
             <div className="row gx-2">
               <Slider {...settings}>
                 {data.map(blog => (
-                  <div className="col-sm-12 col-md-6 col-lg-4">
+                  <div className="col-sm-12 col-md-6 col-lg-4" key={blog.id}>
                     <a href={`/blog/${blog.slug}`} className={`${styles.Blog__Item}`}>
                       <div className={`${styles.Blog__Item__Inner}`}>
                         <div className={`${styles.Blog__Item__ImageWrapper}`}>
@@ -35,7 +35,7 @@ export default function HomeBlog() {
                             <p>{blog.description}</p>
                           </div>
                           <div className={`${styles.Blog__Item__Button}`}>
-                            <Link href={`/blog/${blog.slug}`}>
+                            <Link href={`/blog/${blog.slug}`} key={blog.id}>
                               <button>Xem Thêm</button>
                             </Link>
                           </div>

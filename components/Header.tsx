@@ -32,8 +32,8 @@ export default function Header() {
                           <form role="search" method="get" className="searchform" action="http://mauweb.monamedia.net/webdep/">
                             <div className="flex-row relative">
                               <div className="flex-col flex-grow">
-                                <input type="search" className="search-field mb-0" name="s" value="" placeholder="Tìm kiếm…" autoComplete="off" />
-                                <input type="hidden" name="post_type" value="product" />
+                                <input type="search" className="search-field mb-0" name="s" value="" placeholder="Tìm kiếm…" autoComplete="off" readOnly />
+                                <input type="hidden" name="post_type" value="product" readOnly />
                               </div>
                               <div className="flex-col">
                                 <button type="submit" className="ux-search-submit submit-button secondary button icon mb-0">

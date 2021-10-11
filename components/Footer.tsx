@@ -53,7 +53,7 @@ export default function Footer(props) {
               <div className={styles.blogs}>
                 <h3>Blog</h3>
                 {(blogs || []).map(blog => (
-                  <a href={`/blog/${blog.slug}`} className={styles.item}>
+                  <a href={`/blog/${blog.slug}`} className={styles.item} key={blog.id}>
                     <p className={styles.title}>{blog.tittle}</p>
                     <span>{moment(blog.createdAt).format("YYYY/MM/DD HH:mm")}</span>
                     <div className={styles.divider} />

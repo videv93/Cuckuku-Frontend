@@ -28,7 +28,7 @@ export default function Product({product}) {
           if (index % 2 == 0) {
             return (
               (
-                <>
+                <div key={index}>
                   <div className="col-sm-12 col-md-6 animate__animated animate__fadeInLeft">
                     {(feature.thumbnails || []).map(thumbnail => (
                       <img className={styles.featureThumbnail} src={thumbnail.url} alt="" />
@@ -38,12 +38,12 @@ export default function Product({product}) {
                     <h4>{feature.title}</h4>
                     <p>{feature.description}</p>
                   </div>
-                </>
+                </div>
               )
             )
           } else {
             return (
-              <>
+              <div id={index}>
                 <div className="col-sm-12 col-md-6 text-end animate__animated animate__fadeInLeft">
                   <h4>{feature.title}</h4>
                   <p>{feature.description}</p>
@@ -53,7 +53,7 @@ export default function Product({product}) {
                     <img className={styles.featureThumbnail} src={thumbnail.url} alt="" />
                   ))}
                 </div>
-              </>
+              </div>
             )
           }
         })}
