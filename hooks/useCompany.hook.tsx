@@ -3,7 +3,14 @@ import {gql} from "graphql-request";
 import client from "../utils/client";
 
 export default function useCompany() {
-  const [company, setCompany] = useState({});
+  const [company, setCompany] = useState({
+    lat: '',
+    lng: '',
+    address: '',
+    phone: '',
+    email: '',
+    skype: '',
+  });
   useEffect(() => {
     const queryCompany = gql`
     query {
