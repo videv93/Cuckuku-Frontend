@@ -29,7 +29,7 @@ export default function Product({product}) {
           ))}
         </div>
         <div className="col-sm-12 col-md-6 mt-4 mt-sm-0 animate__animated animate__fadeInRight">
-          {parse(product.description.html || '')}
+          {parse(product.description?.html || '')}
         </div>
       </div>
       <div>
