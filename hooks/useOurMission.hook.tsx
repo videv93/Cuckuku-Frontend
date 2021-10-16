@@ -1,10 +1,7 @@
-import { sampleOurMissionData } from "../utils/sample-data"
-
+import { sampleOurMissionData } from "../utils/sample-data";
 
 const useOurMission = () => {
-
   const listItem = sampleOurMissionData
-
   return { listItem }
 }
 

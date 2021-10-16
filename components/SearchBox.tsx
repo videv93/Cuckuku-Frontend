@@ -2,9 +2,11 @@ import { ReactNode } from "react";
 import useSearchBox from "../hooks/useSearchBox.hook";
 import styles from "../styles/layout/SearchBox.module.scss";
 import { useRouter } from "next/router";
+import {useIntl} from "react-intl";
 
 export default function SearchBox() {
-  const { formik, onSearch, showSuggest, listAutocomplete, searching, onRedirect } = useSearchBox()
+  const { formik, onSearch, showSuggest, listAutocomplete, searching, onRedirect } = useSearchBox();
+  const intl = useIntl();
   return (
     <aside>
       <div className={`${styles.SearchBox}`}>
@@ -21,7 +23,7 @@ export default function SearchBox() {
                 }}
                 onBlur={formik.handleBlur}
                 value={formik.values.search}
-                placeholder="Tìm kiếm..."
+                placeholder={intl.formatMessage({id: 'searching'})}
                 autoComplete="off"
               />
               {formik.touched.search && formik.errors.search ? (
@@ -47,16 +49,14 @@ export default function SearchBox() {
                       </a>
                     )) : (<div className={`${styles.SearchBox__Suggestion}`}>
                       <div>
-                        Không có sản phẩm nào.
+                        {intl.formatMessage({id: 'no_result'})}
                       </div>
                     </div>)
                   }
                 </div>
               </div>
-
             ) : <></>
           }
-
         </form>
       </div>
     </aside >

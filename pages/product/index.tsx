@@ -30,18 +30,6 @@ export async function getServerSideProps(context) {
             url
           }
           createdAt
-          features {
-            ... on Feature {
-              id
-              title
-              createdAt
-              description
-              thumbnails {
-                url
-                id
-              }
-            }
-          }
         }
       }
     `;

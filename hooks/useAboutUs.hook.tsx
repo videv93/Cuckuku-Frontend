@@ -5,11 +5,13 @@ import { ref, uploadBytes } from "firebase/storage";
 import axios from "axios";
 import useModal from "./useModal.hook";
 import {useState} from "react";
+import {useIntl} from "react-intl";
 
 const useAboutUs = () => {
   // @ts-ignore
   const { openModal } = useModal();
   const [loading, setLoading] = useState(false);
+  const intl = useIntl();
   const formik = useFormik({
     initialValues: {
       fullName: '',
@@ -21,14 +23,14 @@ const useAboutUs = () => {
     },
     validationSchema: Yup.object({
       fullName: Yup.string()
-        .required('Trường bắt buộc'),
+        .required(intl.formatMessage({id: 'field_required'})),
       email: Yup.string()
-        .required('Trường bắt buộc'),
+        .required(intl.formatMessage({id: 'field_required'})),
       phone: Yup.string()
-        .required('Trường bắt buộc'),
+        .required(intl.formatMessage({id: 'field_required'})),
       address: Yup.string(),
       message: Yup.string()
-        .required('Trường bắt buộc'),
+        .required(intl.formatMessage({id: 'field_required'})),
     }),
     onSubmit: (values, formikBag) => {
       let tasks = [];
@@ -47,7 +49,7 @@ const useAboutUs = () => {
         axios.post("https://us-central1-cuckuku-fa48b.cloudfunctions.net/api/contacts", contact).then(response => {
           formikBag.resetForm();
           setLoading(false);
-          openModal("Cảm ơn bạn đã liên hệ với chúng tôi!");
+          openModal(intl.formatMessage({id: 'thanks_for_contact'}));
         }).catch(err => {
           console.log(err);
         })

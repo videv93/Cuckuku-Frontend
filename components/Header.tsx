@@ -1,10 +1,12 @@
 import React from "react";
 import styles from "../styles/layout/Header.module.scss";
 import useHeader from "../hooks/useHeader.hook";
-
+import LanguageSwitcher from "./LanguageSwitcher";
+import {useIntl} from "react-intl";
 
 export default function Header() {
-  const { hideHeader, onRedirect } = useHeader()
+  const { hideHeader } = useHeader();
+  const intl = useIntl();
   return (
     <header className={`${styles.Header} has-sticky sticky-jump`} style={{ marginTop: hideHeader ? 100 : 0 }}>
       <div className={`${styles.Header__Wrapper} header-wrapper ${hideHeader ? 'stuck' : ''}`}>
@@ -18,11 +20,12 @@ export default function Header() {
             </button>
             <div className="flex-col hide-for-medium flex-right collapse navbar-collapse" id="navbarNav">
               <ul className={`nav navbar-nav reset-list-row ${styles.Header__Menu}`}>
-                <li className="nav-item"> <a className="nav-link" href="/">Trang chủ</a></li>
-                <li className="nav-item"> <a className="nav-link" href="/introduce">Giới thiệu</a></li>
-                <li className="nav-item"> <a className="nav-link" href="/product">Sản phẩm</a></li>
-                <li className="nav-item"><a className="nav-link" href="/blog?s=">Blog</a></li>
-                <li className="nav-item"> <a className="nav-link" href="/about-us">Liên hệ</a></li>
+                <li className="nav-item"><a className="nav-link" href="/">{intl.formatMessage({id: 'home_page'})}</a></li>
+                <li className="nav-item"><a className="nav-link" href="/introduce">{intl.formatMessage({id: 'introduce'})}</a></li>
+                <li className="nav-item"><a className="nav-link" href="/product">{intl.formatMessage({id: "product"})}</a></li>
+                <li className="nav-item"><a className="nav-link" href="/blog?s=">{intl.formatMessage({id: 'blog'})}</a></li>
+                <li className="nav-item"><a className="nav-link" href="/about-us">{intl.formatMessage({id: 'contact'})}</a></li>
+                <LanguageSwitcher />
                 <li className="has-dropdown">
                   <a><i className="bi bi-search" /></a>
                   <ul className="nav-dropdown nav-dropdown-simple" >
@@ -37,13 +40,22 @@ export default function Header() {
                               </div>
                               <div className="flex-col">
                                 <button type="submit" className="ux-search-submit submit-button secondary button icon mb-0">
-                                  <i className="icon-search"></i>				</button>
+                                  <i className="icon-search" />
+                                </button>
                               </div>
                             </div>
-                            <div className="live-search-results text-left z-top"><div className="autocomplete-suggestions"><div className="autocomplete-suggestion" data-index="0"><div className="search-name">Không có sản phẩm nào.</div></div></div></div>
+                            <div className="live-search-results text-left z-top">
+                              <div className="autocomplete-suggestions">
+                                <div className="autocomplete-suggestion" data-index="0">
+                                  <div className="search-name">Không có sản phẩm nào.</div>
+                                </div>
+                              </div>
+                            </div>
                           </form>
-                        </div>	</div>
-                    </li>	</ul>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
                 </li>
               </ul>
             </div>

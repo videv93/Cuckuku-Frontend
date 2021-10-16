@@ -2,9 +2,11 @@ import { sampleBlogData } from "../utils/sample-data";
 import {gql} from "graphql-request";
 import {useEffect, useState} from "react";
 import client from "../utils/client";
+import {useIntl} from "react-intl";
 const useBlog = () => {
   const [blogs, setBlogs] = useState<any>([]);
   const [recentBlogs, setRecentBlogs] = useState([]);
+  const intl = useIntl();
   const settings = {
     dots: false,
     arrows: true,
@@ -64,9 +66,9 @@ const useBlog = () => {
     });
   }, [])
   const content = {
-    category: "Chuyên Nghiệp",
-    title: "Nơi chia sẽ những thông tin bổ ích",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    category: intl.formatMessage({id: 'professional'}),
+    title: intl.formatMessage({id: 'sharing_place'}),
+    description: intl.formatMessage({id: 'sharing_place_desc'})
   }
   return { settings, data: blogs, recentBlogs, content }
 }

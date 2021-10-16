@@ -1,8 +1,5 @@
 import { sampleCustomerReview } from "../utils/sample-data";
-
-
 const useCustomerReview = () => {
-
   const settings = {
     dots: false,
     arrows: true,
@@ -21,10 +18,7 @@ const useCustomerReview = () => {
       }
     ]
   };
-
   const customerData = sampleCustomerReview;
-
-
   return { settings, customerData }
 }
 

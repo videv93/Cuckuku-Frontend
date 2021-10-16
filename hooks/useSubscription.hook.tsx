@@ -3,9 +3,11 @@ import * as Yup from 'yup';
 import axios from "axios";
 import {useState} from "react";
 import useModal from "./useModal.hook";
+import {useIntl} from "react-intl";
 
 export default function useSubscription() {
   const [loading, setLoading] = useState(false);
+  const intl = useIntl();
   // @ts-ignore
   const {openModal} = useModal();
   const formik = useFormik({
@@ -13,7 +15,7 @@ export default function useSubscription() {
       email: ''
     },
     validationSchema: Yup.object({
-      email: Yup.string().email().required('Trường bắt buộc')
+      email: Yup.string().email().required(intl.formatMessage({id: 'field_required'}))
     }),
     onSubmit: (values, formikBag) => {
       setLoading(true);
@@ -21,7 +23,7 @@ export default function useSubscription() {
         .then(response => {
           formikBag.resetForm();
           setLoading(false);
-          openModal("Cảm ơn bạn đã đăng ký!");
+          openModal(intl.formatMessage({id: 'thanks_for_subscribe'}));
         }).catch(err => {
           setLoading(false);
         })

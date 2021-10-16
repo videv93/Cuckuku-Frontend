@@ -4,16 +4,18 @@ import TitleLine from "./TitleLine";
 import Slider from "react-slick";
 import useBlog from "../hooks/useBlog.hook";
 import Link from "next/link";
+import {useIntl} from "react-intl";
 
 export default function HomeBlog() {
+  const intl = useIntl();
   const { settings, data, content } = useBlog();
   return (
     <section className={`${styles.Blog} Blog`}>
       <div className="container">
         <div className="row gx-5">
           <div className="col-sm-12 col-md-10 col-lg-4 align-self-center">
-            <TitleLine category={content.category} title={content.title} description={content.description}></TitleLine>
-            <Button title="Xem thêm" variant="primary is-outline" href="/blog?s="></Button>
+            <TitleLine category={content.category} title={content.title} description={content.description} />
+            <Button title={intl.formatMessage({id: 'view_more'})} variant="primary is-outline" href="/blog?s=" />
           </div>
           <div className="col-sm-12 col-md-12 col-lg-8 align-self-center">
             <div className="row gx-2">
@@ -36,7 +38,7 @@ export default function HomeBlog() {
                           </div>
                           <div className={`${styles.Blog__Item__Button}`}>
                             <Link href={`/blog/${blog.slug}`} key={blog.id}>
-                              <button>Xem Thêm</button>
+                              <button>{intl.formatMessage({id: 'view_more'})}</button>
                             </Link>
                           </div>
                         </div>
@@ -44,7 +46,6 @@ export default function HomeBlog() {
                     </a>
                   </div>
                 ))}
-
               </Slider>
             </div>
           </div>

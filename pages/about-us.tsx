@@ -7,15 +7,17 @@ import useAboutUs from "../hooks/useAboutUs.hook";
 import Button from "../components/Button"
 import useCompany from "../hooks/useCompany.hook";
 import Marker from "../components/Marker";
+import {useIntl} from "react-intl";
 
 const AboutUs = () => {
-  const router = useRouter()
+  const router = useRouter();
+  const intl = useIntl();
   const { s } = router.query
   const { formik, loading } = useAboutUs();
   const { company } = useCompany();
   return (
     <>
-      <PageHeader title="LIÊN HỆ" breadcrumbs={{ title: 'Trang chủ', url: '/' }} />
+      <PageHeader title={intl.formatMessage({id: 'contact'})} breadcrumbs={{ title: intl.formatMessage({id: 'home_page'}), url: '/' }} />
       <div className="container mt-5 mb-5">
         <div className="row">
           <div className="col-sm-12 col-md-12 col-lg-6">
@@ -68,7 +70,7 @@ const AboutUs = () => {
             </div>
             <div className="col-sm-12">
               <div className={`${styles.AboutUs__Title} text-center mt-4 mb-4`}>
-                <h2>LIÊN HỆ VỚI CHÚNG TÔI</h2>
+                <h2>{intl.formatMessage({id: 'contact_us'})}</h2>
               </div>
             </div>
             <div className="col-sm-12">
@@ -83,7 +85,7 @@ const AboutUs = () => {
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
                         value={formik.values.fullName}
-                        placeholder="Họ và Tên"
+                        placeholder={intl.formatMessage({id: 'name'})}
                         autoComplete="off"
                       />
                       {formik.touched.fullName && formik.errors.fullName ? (
@@ -98,7 +100,7 @@ const AboutUs = () => {
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
                         value={formik.values.email}
-                        placeholder="Email"
+                        placeholder={intl.formatMessage({id: 'email'})}
                         autoComplete="off"
                       />
                       {formik.touched.email && formik.errors.email ? (
@@ -113,7 +115,7 @@ const AboutUs = () => {
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
                         value={formik.values.phone}
-                        placeholder="Số điện thoại"
+                        placeholder={intl.formatMessage({id: 'phone_number'})}
                         autoComplete="off"
                       />
                       {formik.touched.phone && formik.errors.phone ? (
@@ -128,7 +130,7 @@ const AboutUs = () => {
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
                         value={formik.values.address}
-                        placeholder="Địa chỉ"
+                        placeholder={intl.formatMessage({id: 'address'})}
                         autoComplete="off"
                       />
                       {formik.touched.address && formik.errors.address ? (
@@ -143,7 +145,7 @@ const AboutUs = () => {
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
                         value={formik.values.message}
-                        placeholder="Lời nhắn"
+                        placeholder={intl.formatMessage({id: 'message'})}
                         autoComplete="off"
                       />
                       {formik.touched.message && formik.errors.message ? (
@@ -151,12 +153,13 @@ const AboutUs = () => {
                       ) : null}
                     </div>
                     <div className="col-sm-12 col-md-12 col-lg-12 pb-4">
+                      {/*<label htmlFor="attachments">{intl.formatMessage({id: 'attachments'})}</label>*/}
                       <input type="file" className="attachments" id="attachments" name="attachments" multiple onChange={(event) => {
                         formik.setFieldValue("attachments", event.currentTarget.files);
                       }} />
                     </div>
                     <div className="col-12">
-                      <Button type="submit" title="Gởi" loading={loading} />
+                      <Button type="submit" title={intl.formatMessage({id: 'sent'})} loading={loading} />
                     </div>
                   </div>
                 </form>

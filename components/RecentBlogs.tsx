@@ -1,5 +1,6 @@
 import styles from '../styles/components/RecentBlog.module.scss';
 import {Blog} from "../interfaces";
+import {useIntl} from "react-intl";
 
 interface RecentBlogsProps {
   blogs: Blog[]
@@ -7,9 +8,10 @@ interface RecentBlogsProps {
 
 export default function RecentBlogs(props: RecentBlogsProps) {
   const {blogs} = props;
+  const intl = useIntl();
   return (
     <div className={styles.container}>
-      <div>BÀI VIẾT MỚI</div>
+      <div>{intl.formatMessage({id: 'new_posts'})}</div>
       <div className={styles.wrapper}>
         {(blogs || []).map(blog => (
           <a href={`/blog/${blog.slug}`} className={styles.item}>

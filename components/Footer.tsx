@@ -3,10 +3,12 @@ import moment from "moment";
 import React from "react";
 import useSubscription from "../hooks/useSubscription.hook";
 import {Spinner} from "react-bootstrap";
+import {useIntl} from "react-intl";
 
 export default function Footer(props) {
   const { blogs, company } = props;
   const { formik, loading } = useSubscription();
+  const intl = useIntl();
   return (
     <footer className={styles.footer}>
       <section className={styles.main}>
@@ -41,11 +43,11 @@ export default function Footer(props) {
               <div className={styles.menu}>
                 <h3>Menu</h3>
                 <ul className="reset-list">
-                  <li className={styles.item}><a href="/">Trang chủ</a></li>
-                  <li className={styles.item}><a href="/introduce">Giới thiệu</a></li>
-                  <li className={styles.item}><a href="/product">Sản phẩm</a></li>
-                  <li className={styles.item}><a href="/blog?s=">Blog chia sẻ</a></li>
-                  <li className={styles.item}><a href="/about-us">Liên hệ</a></li>
+                  <li className={styles.item}><a href="/">{intl.formatMessage({id : 'home_page'})}</a></li>
+                  <li className={styles.item}><a href="/introduce">{intl.formatMessage({id : 'introduce'})}</a></li>
+                  <li className={styles.item}><a href="/product">{intl.formatMessage({id : 'product'})}</a></li>
+                  <li className={styles.item}><a href="/blog?s=">{intl.formatMessage({id : 'blog'})}</a></li>
+                  <li className={styles.item}><a href="/about-us">{intl.formatMessage({id : 'contact'})}</a></li>
                 </ul>
               </div>
             </div>
@@ -63,8 +65,8 @@ export default function Footer(props) {
             </div>
             <div className="col-sm-12 col-md-4 mt-4 mt-md-0">
               <div className={styles.subscription}>
-                <h3>Đăng ký</h3>
-                <p>Đăng ký để nhận được thông tin mới nhất từ chúng tôi</p>
+                <h3>{intl.formatMessage({id: 'subscribe'})}</h3>
+                <p>{intl.formatMessage({id: 'subscribe_for_more_info'})}</p>
                 <form onSubmit={formik.handleSubmit}>
                   <p className={styles.input}>
                     <input
@@ -89,7 +91,7 @@ export default function Footer(props) {
                     </label>
                   </p>
                 </form>
-                <h3>Kết nối với chúng tôi</h3>
+                <h3>{intl.formatMessage({id: 'connect_with_us'})}</h3>
                 <div className={styles.social}>
                   <a className={styles.icon} href={company?.facebook}><i className="bi bi-facebook" /></a>
                   <a className={styles.icon} href={company?.instagram}><i className="bi bi-instagram" /></a>
@@ -103,7 +105,7 @@ export default function Footer(props) {
       <div className={`text-center ${styles.copyRight}`}>
         <div className="container">
           <div className={styles.text}>
-            © Bản quyền thuộc về . Thiết kế website Mona Media
+            {intl.formatMessage({id: 'copy_right'})}
           </div>
         </div>
       </div>

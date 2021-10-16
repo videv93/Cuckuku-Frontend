@@ -18,7 +18,7 @@ export default function TitleLine({ title = '', description, category = '' }: Pr
         </h3>
         <h2>{title}</h2>
       </div>
-      {parse(description)}
+      {parse(description || '')}
     </div>
   )
 }

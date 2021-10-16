@@ -1,7 +1,9 @@
 import styles from "../styles/layout/HomeBanner.module.scss";
 import Button from "./Button"
+import {useIntl} from "react-intl";
 
 export default function HomeBanner({banner}) {
+  const intl = useIntl();
   return (
     <section className={`${styles.Banner} banner`}>
       <div className={`${styles.Banner__Bg}  container`}>
@@ -17,8 +19,8 @@ export default function HomeBanner({banner}) {
                 {banner?.subTitle}
               </h3>
               <p>{banner?.description}</p>
-              <Button title="Về chúng tôi" href="/introduce"></Button>
-              <Button title="Liên hệ" variant="primary is-outline" href="/about-us"></Button>
+              <Button title={intl.formatMessage({id: 'about_us'})} href="/introduce" />
+              <Button title={intl.formatMessage({id: 'contact'})} variant="primary is-outline" href="/about-us" />
             </div>
           </div>
           <div className="col-sm-0 col-md-1"></div>

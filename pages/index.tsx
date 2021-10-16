@@ -7,8 +7,7 @@ import HomeBlog from "../components/HomeBlog";
 import {gql} from "graphql-request";
 import client from "../utils/client";
 
-const IndexPage = ({ reviews, banner, aboutUs }) => {
-    console.log('reviews', reviews);
+const IndexPage = ({ reviews, banner, aboutUs, intl }) => {
     return (
       <>
           <HomeBanner banner={banner} />
@@ -23,11 +22,12 @@ const IndexPage = ({ reviews, banner, aboutUs }) => {
 export default IndexPage;
 
 export async function getServerSideProps(ctx) {
+  const locale = ctx.locale;
     const reviewQuery = gql`
-        query {
-            reviews {
+        query reviewQuery($locale: Locale!) {
+            reviews(locales: [$locale]) {
                 content
-                avatar {
+                avatar(locales: en) {
                   id
                   url
                 }
@@ -40,14 +40,14 @@ export async function getServerSideProps(ctx) {
         }
     `;
     const bannerQuery = gql`
-        query {
-            banner(where: {id: "ckufnncfcm2os0a40e32k01zg"}) {
+        query bannerQuery($locale: Locale!) {
+            banner(locales: [$locale], where: {id: "ckufnncfcm2os0a40e32k01zg"}) {
                 id
                 locale
                 description
                 subTitle
                 title
-                thumbnail {
+                thumbnail(locales: en) {
                   url
                   id
                 }
@@ -55,8 +55,8 @@ export async function getServerSideProps(ctx) {
         }
     `;
     const aboutUsQuery = gql`
-        query {
-            aboutUs(where: {id: "ckufo2mkwm5yx09869v5tiv7v"}) {
+        query aboutQuery($locale: Locale!) {
+            aboutUs(locales: [$locale], where: {id: "ckufo2mkwm5yx09869v5tiv7v"}) {
             id
             jobDescription1
             jobDescription2
@@ -69,27 +69,27 @@ export async function getServerSideProps(ctx) {
             description {
               html
             }
-            thumbnail {
+            thumbnail(locales: en) {
               url
             }
-            jobThumbnail1 {
-              url
-              id
-            }
-            jobThumbnail2 {
+            jobThumbnail1(locales: en) {
               url
               id
             }
-            jobThumbnail3 {
+            jobThumbnail2(locales: en) {
+              url
+              id
+            }
+            jobThumbnail3(locales: en) {
               url
               id
             }
           }
         }
     `
-    const reviews = await client.request(reviewQuery);
-    const banner = await client.request(bannerQuery);
-    const aboutUs = await client.request(aboutUsQuery);
+    const reviews = await client.request(reviewQuery, {locale});
+    const banner = await client.request(bannerQuery, {locale});
+    const aboutUs = await client.request(aboutUsQuery, {locale});
     return {
         props: {
             reviews: reviews.reviews,

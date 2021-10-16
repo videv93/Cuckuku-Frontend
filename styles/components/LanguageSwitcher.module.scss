@@ -1,0 +1,11 @@
+.container {
+  border: none;
+  box-sizing: content-box;
+  background-color: white;
+  position: relative;
+  top: -2px;
+  &:focus-visible {
+    border: none;
+    outline: none;
+  }
+}

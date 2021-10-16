@@ -7,7 +7,6 @@ const usePageHeader = () => {
   const onRedirect = (path) => {
     router.push(path || '/')
   }
-
   return { onRedirect }
 }
 

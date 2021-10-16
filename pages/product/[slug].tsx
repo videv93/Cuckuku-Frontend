@@ -7,9 +7,11 @@ import parse from "html-react-parser";
 import Button from "../../components/Button";
 import React from "react";
 import useProduct from "../../hooks/useProduct.hook";
+import {useIntl} from "react-intl";
 
 export default function Product({product}) {
   const { formik, loading, summary } = useProduct({slug: product.slug});
+  const intl = useIntl();
   return (
     <div className="container p-4">
       <h3 className={`${styles.title} animate__animated animate__fadeInDown`}>{product.title}</h3>
@@ -61,19 +63,19 @@ export default function Product({product}) {
       <div className="row justify-content-around my-4">
         <div className="col-sm-12 col-md-3 text-center">
           <h4 className={styles.number}>999</h4>
-          <p>Số lượt xem</p>
+          <p>{intl.formatMessage({id: 'view_number'})}</p>
         </div>
         <div className="col-sm-12 col-md-3 text-center">
           <h4 className={styles.number}>{summary.comments}</h4>
-          <p>Số lượt bình luận</p>
+          <p>{intl.formatMessage({id: 'comment_number'})}</p>
         </div>
         <div className="col-sm-12 col-md-3 text-center">
           <h4 className={styles.number}>{summary.likes}</h4>
-          <p>Số lượt quan tâm</p>
+          <p>{intl.formatMessage({id: 'like_number'})}</p>
         </div>
       </div>
       <div>
-        <h3 className="text-center my-4">Đánh giá sản phẩm</h3>
+        <h3 className="text-center my-4">{intl.formatMessage({id: 'review_product'})}</h3>
         <form onSubmit={formik.handleSubmit}>
           <div className="row">
             <div className="col-sm-12 col-md-6 col-lg-6 pb-4">
@@ -84,7 +86,7 @@ export default function Product({product}) {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.fullName}
-                placeholder="Họ và Tên"
+                placeholder={intl.formatMessage({id: 'name'})}
                 autoComplete="off"
               />
               {formik.touched.fullName && formik.errors.fullName ? (
@@ -99,7 +101,7 @@ export default function Product({product}) {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.email}
-                placeholder="Email"
+                placeholder={intl.formatMessage({id: 'email'})}
                 autoComplete="off"
               />
               {formik.touched.email && formik.errors.email ? (
@@ -114,7 +116,7 @@ export default function Product({product}) {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.phone}
-                placeholder="Số điện thoại"
+                placeholder={intl.formatMessage({id: 'phone_number'})}
                 autoComplete="off"
               />
               {formik.touched.phone && formik.errors.phone ? (
@@ -123,7 +125,7 @@ export default function Product({product}) {
             </div>
             <div className="col-sm-12 col-md-12 col-lg-12-pb-4">
               <fieldset className="row mb-3">
-                <legend className="col-form-label col-sm-4 pt-0">Bạn có quan tâm đến sản phẩm này không ?</legend>
+                <legend className="col-form-label col-sm-4 pt-0">{intl.formatMessage({id: 'review_question'})}</legend>
                 <div className="col-sm-8">
                   <div className="form-check">
                     <input
@@ -134,7 +136,7 @@ export default function Product({product}) {
                       checked={formik.values.liked}
                       id="like" />
                     <label className="form-check-label" htmlFor="like">
-                      Có
+                      {intl.formatMessage({id: 'yes'})}
                     </label>
                   </div>
                   <div className="form-check">
@@ -147,7 +149,7 @@ export default function Product({product}) {
                       checked={!formik.values.liked}
                     />
                     <label className="form-check-label" htmlFor="dislike">
-                      Không
+                      {intl.formatMessage({id: 'no'})}
                     </label>
                   </div>
                 </div>
@@ -161,7 +163,7 @@ export default function Product({product}) {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.comment}
-                placeholder="Bình luận"
+                placeholder={intl.formatMessage({id: 'comment'})}
                 autoComplete="off"
               />
               {formik.touched.comment && formik.errors.comment ? (
@@ -169,7 +171,7 @@ export default function Product({product}) {
               ) : null}
             </div>
             <div className="col-12">
-              <Button type="submit" title="Gởi" loading={loading} />
+              <Button type="submit" title={intl.formatMessage({id: 'sent'})} loading={loading} />
             </div>
           </div>
         </form>

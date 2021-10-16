@@ -5,6 +5,7 @@ import Footer from "./Footer";
 import styles from "../styles/layout/Layout.module.scss";
 import useBlog from "../hooks/useBlog.hook";
 import useCompany from "../hooks/useCompany.hook";
+import {useIntl} from "react-intl";
 
 type Props = {
   children?: ReactNode
@@ -12,9 +13,11 @@ type Props = {
   recentPosts?: any,
 }
 
-const Layout = ({children, title = 'Thiết kế web đẹp – Hosting / Domain / SSL Cert'}: Props) => {
+const Layout = ({children, title}: Props) => {
   const {recentBlogs} = useBlog();
   const {company} = useCompany();
+  const intl = useIntl();
+  title = title || intl.formatMessage({id: 'head_title'});
   return (
     <div className={styles.wrapper}>
       <Helmet>

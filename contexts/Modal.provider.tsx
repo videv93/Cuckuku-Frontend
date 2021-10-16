@@ -1,9 +1,11 @@
 import ModalContext from "./Modal.context";
 import {useState} from "react";
 import {Button, Modal} from "react-bootstrap";
+import {useIntl} from "react-intl";
 export default function ModalProvider({children}) {
   const [showModal, setShowModal] = useState(false);
-  const [message, setMessage] = useState('')
+  const [message, setMessage] = useState('');
+  const intl = useIntl();
   const handleClose = () => {
     setShowModal(false);
   }
@@ -19,7 +21,7 @@ export default function ModalProvider({children}) {
           <Modal.Body>{message}</Modal.Body>
           <Modal.Footer>
             <Button variant="primary" onClick={handleClose}>
-              Đóng
+              {intl.formatMessage({id: 'close'})}
             </Button>
           </Modal.Footer>
         </Modal>

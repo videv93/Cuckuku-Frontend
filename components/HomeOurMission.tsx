@@ -1,11 +1,11 @@
 import styles from "../styles/layout/HomeOurMission.module.scss";
 import useOurMission from "../hooks/useOurMission.hook";
 import IconImage from "./IconImage"
+import {useIntl} from "react-intl";
 
 
 export default function HomeOurMission({ aboutUs }) {
-
-  const { listItem } = useOurMission()
+  const intl = useIntl();
   return (
     <section className={`${styles.OurMission}`}>
       <div className="container">
@@ -13,10 +13,10 @@ export default function HomeOurMission({ aboutUs }) {
           <div className="col-12">
             <div className="col-inner text-center">
               <h3>
-                Nhiệm vụ
+                {intl.formatMessage({id: 'mission'})}
               </h3>
               <h2>
-                Những công việc mà chúng tôi làm
+                {intl.formatMessage({id: "our_work"})}
               </h2>
             </div>
           </div>

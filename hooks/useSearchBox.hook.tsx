@@ -1,17 +1,18 @@
-import { sampleBlogData, sampleSearchResults } from "../utils/sample-data";
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useRouter } from 'next/router'
 import { useState } from "react";
 import {gql} from "graphql-request";
 import client from "../utils/client";
+import {useIntl} from "react-intl";
 
 
 const useSearchBox = () => {
   const router = useRouter();
   const [showSuggest, setShowSuggest] = useState(false)
   const [searching, setSearching] = useState(false)
-  const [listAutocomplete, setListAutocomplete] = useState([])
+  const [listAutocomplete, setListAutocomplete] = useState([]);
+  const intl = useIntl();
 
   const onSearch = async (search) => {
     setShowSuggest(false)
@@ -40,7 +41,7 @@ const useSearchBox = () => {
     },
     validationSchema: Yup.object({
       search: Yup.string()
-        .required('Vui lòng nhập từ cần tìm kiếm'),
+        .required(intl.formatMessage({id: 'search_placeholder'})),
     }),
     onSubmit: values => {
       const {search} = values;
