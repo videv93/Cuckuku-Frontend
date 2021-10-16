@@ -2,4 +2,4 @@
 - [ ] Setup multil languages (2h)
 - [ ] Highlight menu when select (15m)
 - [ ] Check video content on richtext (15m)
-- [ ] 
+- [ ] Keep page 
