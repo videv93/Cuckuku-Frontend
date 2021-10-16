@@ -25,13 +25,13 @@ export default function Product({product}) {
           {parse(product.description.html)}
         </div>
       </div>
-      <div className="row align-items-center mt-4">
+      <div>
         {(product.features || []).map((feature, index) => {
           if (index % 2 == 0) {
             return (
               (
-                <div key={index}>
-                  <div className="col-sm-12 col-md-6 animate__animated animate__fadeInLeft">
+                <div className="row align-items-center mt-4">
+                  <div className="col-sm-12 col-md-6 animate__animated animate__fadeInLeft" key={index}>
                     {(feature.thumbnails || []).map(thumbnail => (
                       <img className={styles.featureThumbnail} src={thumbnail.url} alt="" />
                     ))}
@@ -45,7 +45,7 @@ export default function Product({product}) {
             )
           } else {
             return (
-              <div id={index}>
+              <div className="row align-items-center mt-4">
                 <div className="col-sm-12 col-md-6 text-end animate__animated animate__fadeInLeft">
                   <h4>{feature.title}</h4>
                   <p>{feature.description}</p>
