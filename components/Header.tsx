@@ -26,10 +26,10 @@ export default function Header() {
             <div className="flex-col hide-for-medium flex-right collapse navbar-collapse" id="navbarNav">
               <ul className={`nav navbar-nav reset-list-row ${styles.Header__Menu}`}>
                 <li className={`nav-item ${router.pathname === '/' ? styles.active : ''}`}><Link href="/">{intl.formatMessage({id: 'home_page'})}</Link></li>
-                <li className={`nav-item ${router.pathname === '/introduce' ? styles.active : ''}`}><Link href="/introduce">{intl.formatMessage({id: 'introduce'})}</Link></li>
-                <li className={`nav-item ${router.pathname === '/product' ? styles.active : ''}`}><Link href="/product">{intl.formatMessage({id: "product"})}</Link></li>
-                <li className={`nav-item ${router.pathname === '/blog' ? styles.active : ''}`}><Link href="/blog?s=">{intl.formatMessage({id: 'blog'})}</Link></li>
-                <li className={`nav-item ${router.pathname === '/about-us' ? styles.active : ''}`}><Link href="/about-us">{intl.formatMessage({id: 'contact'})}</Link></li>
+                <li className={`nav-item ${router.pathname.includes('/introduce' ) ? styles.active : ''}`}><Link href="/introduce">{intl.formatMessage({id: 'introduce'})}</Link></li>
+                <li className={`nav-item ${router.pathname.includes('/product') ? styles.active : ''}`}><Link href="/product">{intl.formatMessage({id: "product"})}</Link></li>
+                <li className={`nav-item ${router.pathname.includes('/blog') ? styles.active : ''}`}><Link href="/blog?s=">{intl.formatMessage({id: 'blog'})}</Link></li>
+                <li className={`nav-item ${router.pathname.includes('/about-us') ? styles.active : ''}`}><Link href="/about-us">{intl.formatMessage({id: 'contact'})}</Link></li>
                 <LanguageSwitcher />
                 <li className="has-dropdown">
                   <a><i className="bi bi-search" /></a>

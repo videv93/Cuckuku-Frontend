@@ -18,22 +18,22 @@ export default function Products({products}) {
 }
 
 export async function getServerSideProps(context) {
-  const {s, page} = context.query;
+  const locale = context.locale;
   const queryProducts = gql`
-    query {
-        products {
+    query queryProducts($locale: Locale!) {
+        products(locales: [$locale]) {
           id
           slug
           title
           shortDescription
-          thumbnails {
+          thumbnails(locales: en) {
             url
           }
           createdAt
         }
       }
     `;
-  const products = await client.request(queryProducts);
+  const products = await client.request(queryProducts, {locale});
   return {
     props: {
       products: products.products,

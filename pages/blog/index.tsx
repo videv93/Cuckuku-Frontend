@@ -38,15 +38,16 @@ export default function Blogs({recentPosts, searchPosts}) {
 
 export async function getServerSideProps(context) {
   const { s, page } = context.query;
+  const locale = context.locale;
   const querySearchPosts = gql`
-    query Posts($search: String!, $skip: Int) {
-      posts(orderBy: createdAt_DESC, first: 6, where: {_search: $search}, skip: $skip) {
+    query Posts($search: String!, $skip: Int, $locale: Locale!) {
+      posts(orderBy: createdAt_DESC, first: 6, where: {_search: $search}, skip: $skip, locales: [$locale]) {
         id
         slug
         tittle
         description
         createdAt
-        thumbnail {
+        thumbnail(locales: en) {
           url
           id
         }
@@ -54,21 +55,21 @@ export async function getServerSideProps(context) {
     }
   `;
   const queryRecentPosts = gql`
-    query Posts() {
-      posts(orderBy: createdAt_DESC, first: 5) {
+    query Posts($locale: Locale!) {
+      posts(orderBy: createdAt_DESC, first: 5, locales: [$locale]) {
         id
         slug
         tittle
         createdAt
-        thumbnail {
+        thumbnail(locales: en) {
           url
           id
         }
       }
     }
   `;
-  const recentPosts = await client.request(queryRecentPosts);
-  const searchPosts = await client.request(querySearchPosts, { search: s, skip: page * 6});
+  const recentPosts = await client.request(queryRecentPosts, {locale});
+  const searchPosts = await client.request(querySearchPosts, { search: s, skip: page * 6, locale});
   return {
     props: {
       recentPosts: recentPosts.posts,

@@ -37,14 +37,14 @@ export default function Blog({ recentPosts, post }) {
   )
 }
 
-export const getStaticProps: GetStaticProps = async({params}) => {
+export const getStaticProps: GetStaticProps = async({locale, params}) => {
   const slug = params.slug as string;
   const query = gql`
-    query Post($slug: String!) {
-      post(where: {slug: $slug}) {
+    query Post($slug: String!, $locale: Locale!) {
+      post(where: {slug: $slug}, locales: [$locale]) {
         id
         tittle
-        thumbnail {
+        thumbnail(locales: en) {
           url
         }
         content {
@@ -58,21 +58,21 @@ export const getStaticProps: GetStaticProps = async({params}) => {
     }
   `;
   const queryRecentPosts = gql`
-    query Posts() {
-      posts(orderBy: createdAt_DESC, first: 5) {
+    query Posts($locale: Locale!) {
+      posts(orderBy: createdAt_DESC, first: 5, locales: [$locale]) {
         id
         slug
         tittle
         createdAt
-        thumbnail {
+        thumbnail(locales: en) {
           url
           id
         }
       }
     }
   `
-  const post = await client.request(query, {slug});
-  const recentPosts = await client.request(queryRecentPosts);
+  const post = await client.request(query, {slug, locale});
+  const recentPosts = await client.request(queryRecentPosts, {locale});
   return {
     props: {
       recentPosts: recentPosts.posts,
@@ -82,7 +82,7 @@ export const getStaticProps: GetStaticProps = async({params}) => {
   }
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths = async ({locales}) => {
   const query = gql`
     query Posts {
       posts {
@@ -91,8 +91,15 @@ export const getStaticPaths: GetStaticPaths = async () => {
     }
   `;
   const data = await client.request(query);
+  let paths = []
+  for (const locale of locales) {
+    paths = [
+      ...paths,
+      ...data.posts.map(post => ({ params: { slug: post.slug }})),
+    ]
+  }
   return {
-    paths: data.posts.map(post => ({ params: { slug: post.slug }})),
+    paths: paths,
     fallback: "blocking"
   }
 }

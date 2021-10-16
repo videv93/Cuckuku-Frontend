@@ -180,21 +180,22 @@ export default function Product({product}) {
   )
 }
 
-export const getStaticProps: GetStaticProps = async({params}) => {
+  export const getStaticProps: GetStaticProps = async({locale, params}) => {
   const slug = params.slug as string;
   const query = gql`
-    query Post($slug: String!) {
-      product(where: {slug: $slug}) {
+    query Post($slug: String!, $locale: Locale!) {
+      product(where: {slug: $slug}, locales: [$locale]) {
         id
         locale
         slug
         title
+        locale
         features {
           ... on Feature {
             id
             title
             description
-            thumbnails {
+            thumbnails(locales: en) {
               url
               id
             }
@@ -202,7 +203,7 @@ export const getStaticProps: GetStaticProps = async({params}) => {
           }
         }
         createdAt
-        thumbnails {
+        thumbnails(locales: en) {
           url
           id
         }
@@ -212,7 +213,7 @@ export const getStaticProps: GetStaticProps = async({params}) => {
       }
     }
   `;
-  const product = await client.request(query, {slug});
+  const product = await client.request(query, {slug, locale});
   return {
     props: {
       product: product.product
@@ -221,7 +222,7 @@ export const getStaticProps: GetStaticProps = async({params}) => {
   }
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
   const query = gql`
     query Products {
       products {
@@ -230,8 +231,15 @@ export const getStaticPaths: GetStaticPaths = async () => {
     }
   `;
   const data = await client.request(query);
+  let paths = []
+  for (const locale of locales) {
+    paths = [
+      ...paths,
+      ...data.products.map(post => ({ params: { slug: post.slug }, locale}))
+    ]
+  }
   return {
-    paths: data.products.map(post => ({ params: { slug: post.slug }})),
+    paths: paths,
     fallback: "blocking"
   }
 }
