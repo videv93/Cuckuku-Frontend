@@ -1,17 +1,24 @@
-import Layout from "../../components/Layout";
 import {gql} from "graphql-request";
 import client from "../../utils/client";
 import {GetStaticPaths, GetStaticProps} from "next";
 import styles from "../../styles/pages/Product.module.scss";
 import parse from "html-react-parser";
 import Button from "../../components/Button";
-import React from "react";
+import React, {useEffect} from "react";
 import useProduct from "../../hooks/useProduct.hook";
 import {useIntl} from "react-intl";
+import { logEvent } from "firebase/analytics";
+import { analytics } from "../../utils/firebase";
 
 export default function Product({product}) {
   const { formik, loading, summary } = useProduct({slug: product.slug});
   const intl = useIntl();
+  useEffect(() => {
+    logEvent(analytics, 'screen_view', {
+      firebase_screen: product.slug,
+      firebase_screen_class: 'Product'
+    });
+  }, [analytics])
   return (
     <div className="container p-4">
       <h3 className={`${styles.title} animate__animated animate__fadeInDown`}>{product.title}</h3>
@@ -22,7 +29,7 @@ export default function Product({product}) {
           ))}
         </div>
         <div className="col-sm-12 col-md-6 mt-4 mt-sm-0 animate__animated animate__fadeInRight">
-          {parse(product.description.html)}
+          {parse(product.description.html || '')}
         </div>
       </div>
       <div>

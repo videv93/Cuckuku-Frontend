@@ -27,7 +27,7 @@ export default function Blog({ recentPosts, post }) {
               <Badge date={post?.createdAt} />
               <img src={post?.thumbnail?.url} alt="" className="thumbnail"/>
               <div className="content">
-                {parse(post?.content?.html)}
+                {parse(post?.content?.html || '')}
               </div>
             </div>
           </div>
