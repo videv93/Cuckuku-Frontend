@@ -2,7 +2,6 @@ import React from "react";
 import {gql} from "graphql-request";
 import {GetStaticPaths, GetStaticProps} from "next";
 import client from "../../utils/client";
-import Layout from "../../components/Layout";
 import SearchBox from "../../components/SearchBox";
 import RecentBlogs from "../../components/RecentBlogs";
 import parse from "html-react-parser";

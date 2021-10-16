@@ -22,28 +22,30 @@ export default function HomeBlog() {
               <Slider {...settings}>
                 {data.map(blog => (
                   <div className="col-sm-12 col-md-6 col-lg-4" key={blog.id}>
-                    <a href={`/blog/${blog.slug}`} className={`${styles.Blog__Item}`}>
-                      <div className={`${styles.Blog__Item__Inner}`}>
-                        <div className={`${styles.Blog__Item__ImageWrapper}`}>
-                          <div className={`${styles.Blog__Item__Image}`}>
-                            <img src={blog.img} alt={blog.title} srcSet="" />
+                    <Link href={`/blog/${blog.slug}`}>
+                      <a className={`${styles.Blog__Item}`}>
+                        <div className={`${styles.Blog__Item__Inner}`}>
+                          <div className={`${styles.Blog__Item__ImageWrapper}`}>
+                            <div className={`${styles.Blog__Item__Image}`}>
+                              <img src={blog.img} alt={blog.title} srcSet="" />
+                            </div>
+                          </div>
+                          <div className={`${styles.Blog__Item__Content}`}>
+                            <div className={`${styles.Blog__Item__Title}`}>
+                              <h5>{blog.title}</h5>
+                            </div>
+                            <div className={`${styles.Blog__Item__Description}`}>
+                              <p>{blog.description}</p>
+                            </div>
+                            <div className={`${styles.Blog__Item__Button}`}>
+                              <Link href={`/blog/${blog.slug}`} key={blog.id}>
+                                <button>{intl.formatMessage({id: 'view_more'})}</button>
+                              </Link>
+                            </div>
                           </div>
                         </div>
-                        <div className={`${styles.Blog__Item__Content}`}>
-                          <div className={`${styles.Blog__Item__Title}`}>
-                            <h5>{blog.title}</h5>
-                          </div>
-                          <div className={`${styles.Blog__Item__Description}`}>
-                            <p>{blog.description}</p>
-                          </div>
-                          <div className={`${styles.Blog__Item__Button}`}>
-                            <Link href={`/blog/${blog.slug}`} key={blog.id}>
-                              <button>{intl.formatMessage({id: 'view_more'})}</button>
-                            </Link>
-                          </div>
-                        </div>
-                      </div>
-                    </a>
+                      </a>
+                    </Link>
                   </div>
                 ))}
               </Slider>

@@ -1,5 +1,6 @@
 import { MouseEventHandler } from "react"
 import {Spinner} from "react-bootstrap";
+import Link from "next/link";
 
 type Props = {
   href?: string;
@@ -22,7 +23,8 @@ export default function Button({
   type = '',
   loading
 }: Props) {
-  return type === 'submit' ? (<button className={`${variant} button`} type='submit' style={{ ...style }} onClick={onClick}>
+  return type === 'submit' ? (
+    <button className={`${variant} button`} type='submit' style={{ ...style }} onClick={onClick}>
       {loading ? (
         <span style={{marginRight: '8px'}}>
           <Spinner
@@ -34,12 +36,13 @@ export default function Button({
           />
         </span>
       ) : ''}
-    <span>{title}</span>
-  </button>
-  ) : (<a href={href || '#'} target={target} className={`${variant} button`} type={type} style={{ ...style }} onClick={onClick}>
-    <span>{title}</span>
-  </a>
+      <span>{title}</span>
+    </button>
+  ) : (
+    <Link href={href || '#'}>
+      <a target={target} className={`${variant} button`} type={type} style={{ ...style }} onClick={onClick}>
+        <span>{title}</span>
+      </a>
+    </Link>
   )
-
-
 }

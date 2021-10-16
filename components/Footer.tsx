@@ -4,6 +4,7 @@ import React from "react";
 import useSubscription from "../hooks/useSubscription.hook";
 import {Spinner} from "react-bootstrap";
 import {useIntl} from "react-intl";
+import Link from "next/link";
 
 export default function Footer(props) {
   const { blogs, company } = props;
@@ -43,11 +44,11 @@ export default function Footer(props) {
               <div className={styles.menu}>
                 <h3>Menu</h3>
                 <ul className="reset-list">
-                  <li className={styles.item}><a href="/">{intl.formatMessage({id : 'home_page'})}</a></li>
-                  <li className={styles.item}><a href="/introduce">{intl.formatMessage({id : 'introduce'})}</a></li>
-                  <li className={styles.item}><a href="/product">{intl.formatMessage({id : 'product'})}</a></li>
-                  <li className={styles.item}><a href="/blog?s=">{intl.formatMessage({id : 'blog'})}</a></li>
-                  <li className={styles.item}><a href="/about-us">{intl.formatMessage({id : 'contact'})}</a></li>
+                  <li className={styles.item}><Link href="/">{intl.formatMessage({id : 'home_page'})}</Link></li>
+                  <li className={styles.item}><Link href="/introduce">{intl.formatMessage({id : 'introduce'})}</Link></li>
+                  <li className={styles.item}><Link href="/product">{intl.formatMessage({id : 'product'})}</Link></li>
+                  <li className={styles.item}><Link href="/blog?s=">{intl.formatMessage({id : 'blog'})}</Link></li>
+                  <li className={styles.item}><Link href="/about-us">{intl.formatMessage({id : 'contact'})}</Link></li>
                 </ul>
               </div>
             </div>
@@ -55,11 +56,13 @@ export default function Footer(props) {
               <div className={styles.blogs}>
                 <h3>Blog</h3>
                 {(blogs || []).map(blog => (
-                  <a href={`/blog/${blog.slug}`} className={styles.item} key={blog.id}>
-                    <p className={styles.title}>{blog.tittle}</p>
-                    <span>{moment(blog.createdAt).format("YYYY/MM/DD HH:mm")}</span>
-                    <div className={styles.divider} />
-                  </a>
+                  <Link href={`/blog/${blog.slug}`}key={blog.id}>
+                    <a className={styles.item}>
+                      <p className={styles.title}>{blog.tittle}</p>
+                      <span>{moment(blog.createdAt).format("YYYY/MM/DD HH:mm")}</span>
+                      <div className={styles.divider} />
+                    </a>
+                  </Link>
                 ))}
               </div>
             </div>

@@ -1,4 +1,3 @@
-import Layout from "../../components/Layout";
 import SearchBox from "../../components/SearchBox";
 import RecentBlogs from "../../components/RecentBlogs";
 import React from "react";
@@ -6,6 +5,7 @@ import {gql} from "graphql-request";
 import client from "../../utils/client";
 import styles from "../../styles/pages/Search.module.scss";
 import Badge from "../../components/Badge";
+import Link from "next/link";
 
 export default function Blogs({recentPosts, searchPosts}) {
   return (
@@ -20,12 +20,14 @@ export default function Blogs({recentPosts, searchPosts}) {
         <div className="col-sm-12 col-md-9 mt-4 mt-md-0">
           <div className="row px-4">
             {(searchPosts || []).map(post => (
-              <a href={`/blog/${post.slug}`} className={`col-xs-12 col-md-4 relative ${styles.container}`}>
-                <Badge date={post.createdAt}/>
-                <img className={styles.thumbnail} src={post.thumbnail?.url} alt="" />
-                <h5 className={styles.title}>{post.tittle}</h5>
-                <p className={styles.description}>{post.description}</p>
-              </a>
+              <Link href={`/blog/${post.slug}`}>
+                <a className={`col-xs-12 col-md-4 relative ${styles.container}`}>
+                  <Badge date={post.createdAt}/>
+                  <img className={styles.thumbnail} src={post.thumbnail?.url} alt="" />
+                  <h5 className={styles.title}>{post.tittle}</h5>
+                  <p className={styles.description}>{post.description}</p>
+                </a>
+              </Link>
             ))}
           </div>
         </div>

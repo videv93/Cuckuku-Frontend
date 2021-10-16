@@ -1,7 +1,7 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import usePageHeader from "../hooks/usePageHeader.hook";
 import styles from "../styles/layout/PageHeader.module.scss";
-import { useRouter } from "next/router";
+import Link from "next/link";
 
 type Props = {
   breadcrumbs: {
@@ -33,12 +33,11 @@ export default function PageHeader({ breadcrumbs = {
         <div className={`uppercase flex-col`}>
           <div className={`${styles.PageHeader__Inner__Breadcrumbs}`}>
             <nav>
-              <a href="#" onClick={() => onRedirect(breadcrumbs.url)}> {breadcrumbs.title}</a>
+              <Link href={breadcrumbs.url}>{breadcrumbs.title}</Link>
               <span>/</span>
               {title}
             </nav>
           </div>
-
         </div>
       </div>
     </div >

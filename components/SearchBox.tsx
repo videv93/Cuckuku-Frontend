@@ -1,8 +1,7 @@
-import { ReactNode } from "react";
 import useSearchBox from "../hooks/useSearchBox.hook";
 import styles from "../styles/layout/SearchBox.module.scss";
-import { useRouter } from "next/router";
 import {useIntl} from "react-intl";
+import Link from "next/link";
 
 export default function SearchBox() {
   const { formik, onSearch, showSuggest, listAutocomplete, searching, onRedirect } = useSearchBox();
@@ -41,12 +40,14 @@ export default function SearchBox() {
                 <div className={`${styles.SearchBox__Suggestions}`}>
                   {listAutocomplete.length ?
                     listAutocomplete.map(suggest => (
-                      <a href={`/blog/${suggest.slug}`} className={`${styles.SearchBox__Suggestion}`}>
-                        <img src={suggest.thumbnail?.url} className={styles.SearchBox__Suggestion__Thumbnail} alt="" />
-                        <span className={styles.SearchBox__Suggestion__Title}>
-                          {suggest.tittle}
-                        </span>
-                      </a>
+                      <Link href={`/blog/${suggest.slug}`}>
+                        <a className={`${styles.SearchBox__Suggestion}`}>
+                          <img src={suggest.thumbnail?.url} className={styles.SearchBox__Suggestion__Thumbnail} alt="" />
+                          <span className={styles.SearchBox__Suggestion__Title}>
+                            {suggest.tittle}
+                          </span>
+                        </a>
+                      </Link>
                     )) : (<div className={`${styles.SearchBox__Suggestion}`}>
                       <div>
                         {intl.formatMessage({id: 'no_result'})}
